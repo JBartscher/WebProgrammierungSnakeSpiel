@@ -63,5 +63,15 @@ class StaticGameObject extends GameObject {
     }
 }
 
+function intersects(a, b){
+
+        return (a.x + a.w) < (b.x + b.w)
+            && (a.x) > (b.x)
+            && (a.y) > (b.y)
+            && (a.y + a.h) < (b.y + b.h);
+
+}
+
+
 export {DynamicGameObject, StaticGameObject};
 
