@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>HTML5 Snake Game</title>
+    <meta name="description" content="A basic HTML5 game">
+    <meta name="author" content="Jasper Bartscher">
+    <!-- defer= erst ausgeführt wenn ganzes Dokument geladen ist -->
+    <!-- async= asynchrones laden der Skriptdatei -->
+    <script src="myScript.js defer async"></script>
+</head>
+<body>
+
+<!--Your canvas will come here -->
+<canvas id="canvas" width="640" height="480" style="border:1px solid lightgrey;">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+
+<script>
+    "use strict";
+    let canvas;
+    let context;
+    let timePassed;
+    let oldTimeStamp;
+    let fps;
+    let timePassed = 0;
+
+    window.onload = init;
+
+    function init() {
+        // Get a reference to the canvas
+        canvas = document.getElementById('canvas');
+        context = canvas.getContext('2d');
+
+        // Start the first frame request
+        window.requestAnimationFrame(gameLoop);
+    }
+
+    // The proper game loop
+    window.requestAnimationFrame(gameLoop);
+
+    function gameLoop(timeStamp) {
+        // Calculate the number of seconds passed since the last frame
+        timePassed = (timeStamp - oldTimeStamp) / 1000;
+        // Move forward in time with a maximum amount
+        timePassed = Math.min(timePassed, 0.1);
+        oldTimeStamp = timeStamp;
+
+
+        // Draw number to the screen
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, 200, 100);
+        context.font = '25px Arial';
+        context.fillStyle = 'black';
+        context.fillText("FPS: " + fps, 10, 30);
+
+        // Calculate fps
+        fps = Math.round(1 / timePassed);
+
+        draw();
+
+        window.requestAnimationFrame(gameLoop);
+    }
+
+    function draw() {
+        //clear canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+
+        let randomColor = Math.random() > 0.5 ? '#ff8080' : '#8d4747';
+        context.fillStyle = randomColor;
+        context.fillRect(100, 50, 200, 175);
+    }
+
+    function update(secondsPassed) {
+
+        timePassed += secondsPassed
+
+        // Use different easing functions for different effects.
+        rectX = easeInOutQuint(timePassed, 50, 500, 1.5);
+        rectY = easeLinear(timePassed, 50, 250, 1.5);
+    }
+
+</script>
+</body>
+</html>
