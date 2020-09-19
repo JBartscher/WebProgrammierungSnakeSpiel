@@ -1,18 +1,16 @@
 "use strict";
 
 import {DynamicGameObject} from "./GameObject.js";
+import IOManager from "./IOManager.js";
 
 export default class Game {
 
-    canvas;
-    context;
-    oldTimeStamp;
-    fps;
-    gameObjects;
+    constructor(){
+        this.ioManager = new IOManager();
 
-    constructor() {
         this.canvas = document.getElementById('canvas');
-        this.context = canvas.getContext('2d');
+        this.context = this.canvas.getContext('2d');
+
         this.gameObjects = new Array();
 
         this.oldTimeStamp = 0;
@@ -20,10 +18,11 @@ export default class Game {
 
     init() {
         // Get a reference to the canvas
-        this.canvas = document.getElementById('canvas');
-        this.context = this.canvas.getContext('2d');
-
-        this.gameObjects.push(new DynamicGameObject(0, 50, 100, 100));
+        // this.canvas = document.getElementById('canvas');
+        // this.context = this.canvas.getContext('2d');
+        var g1 = new DynamicGameObject(0, 50, 100, 100);
+        this.ioManager.bindElementToIOManager(g1);
+        this.gameObjects.push(g1);
 
         // Start the first frame request
         window.requestAnimationFrame(this.gameLoop.bind(this));
@@ -36,34 +35,28 @@ export default class Game {
         timePassed = Math.min(timePassed, 0.1);
         this.oldTimeStamp = timeStamp;
 
-
-        // Draw number to the screen
-        this.context.fillStyle = 'white';
-        this.context.fillRect(0, 0, 200, 100);
-        this.context.font = '25px Arial';
-        this.context.fillStyle = 'black';
-        this.context.fillText("FPS: " + this.fps, 10, 30);
-
         // Calculate fps
         this.fps = Math.round(1 / timePassed);
+
+        this.draw();
 
         for (var obj of this.gameObjects) {
             obj.update(timePassed);
             obj.draw(this.context);
         }
 
-        // this.draw();
-
         window.requestAnimationFrame(this.gameLoop.bind(this));
     }
 
     draw() {
         //clear canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-
-        let randomColor = Math.random() > 0.5 ? '#ff8080' : '#8d4747';
-        context.fillStyle = randomColor;
-        context.fillRect(100, 50, 200, 175);
+        // Draw fps to the screen
+        this.context.fillStyle = 'white';
+        this.context.fillRect(0, 0, 200, 100);
+        this.context.font = '25px Arial';
+        this.context.fillStyle = 'black';
+        this.context.fillText("FPS: " + this.fps, 10, 30);
     }
 }

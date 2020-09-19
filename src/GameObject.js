@@ -29,7 +29,7 @@ class GameObject {
 class DynamicGameObject extends GameObject {
 
     constructor(x, y, w, h, easeFunction = easeLinear) {
-        super(x, y);
+        super(x, y, w, h);
 
         this.moving = false
 
@@ -49,8 +49,6 @@ class DynamicGameObject extends GameObject {
     }
 
     update(timePassed) {
-        console.log("updating");
-
         super.update(timePassed);
 
         this.x = this.moving === true ? this.easeFunction(timePassed, this.from.x, this.to.x, this.duration) : this.x;
