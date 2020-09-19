@@ -8,3 +8,5 @@ function easeInOutQuint (t, b, c, d) {
 function easeLinear (t, b, c, d) {
     return c * t / d + b;
 }
+
+export {easeInOutQuint, easeLinear};
