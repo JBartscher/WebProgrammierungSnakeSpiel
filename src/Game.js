@@ -2,7 +2,7 @@
 
 import {DynamicGameObject} from "./GameObject.js";
 import IOManager from "./IOManager.js";
-import Snake from "./Snake.js";
+import Snake from "./Snake/Snake.js";
 
 export default class Game {
 

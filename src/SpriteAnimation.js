@@ -35,7 +35,6 @@ export default class SpriteAnimation {
 
     animate(context, obj, direction) {
 
-
         this.fpsCount++;
 
         if (this.fpsCount > this.ANIMATION_FPS) {
