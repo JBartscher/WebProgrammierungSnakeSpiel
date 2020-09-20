@@ -49,10 +49,7 @@ class DynamicGameObject extends GameObject {
     }
 
     update(timePassed) {
-        super.update(timePassed);
-
-        this.x = this.moving === true ? this.easeFunction(timePassed, this.from.x, this.to.x, this.duration) : this.x;
-        this.y = this.moving === true ? this.easeFunction(timePassed, this.from.y, this.to.y, this.duration) : this.y;
+        super.update(timePassed);;
     }
 
 }

@@ -16,36 +16,27 @@ export default class IOManager {
 
         switch (event.key) {
             case "ArrowDown":
-                // code for "down arrow" key press.
-                var vFrom = new Vector2D(this.elem.x, this.elem.y);
-                var vTo = new Vector2D(this.elem.x, this.elem.y - 500);
-
-                this.elem instanceof DynamicGameObject ? this.elem.setMoveVector(vFrom, vTo, 1.5) : console.log("ehh");
-                this.elem.moving = true;
+                this.elem.changeDirection("down");
+                this.elem.vx = 0;
+                this.elem.vy = + this.elem.speed;
                 break;
             case "ArrowUp":
                 // code for "up arrow" key press.
-                var vFrom = new Vector2D(this.elem.x, this.elem.y);
-                var vTo = new Vector2D(this.elem.x , this.elem.y + 500);
-
-                this.elem instanceof DynamicGameObject ? this.elem.setMoveVector(vFrom, vTo, 1.5) : console.log("ehh");
-                this.elem.moving = true;
+                this.elem.changeDirection("up");
+                this.elem.vx = 0;
+                this.elem.vy = -this.elem.speed;
                 break;
             case "ArrowLeft":
                 // code for "left arrow" key press.
-                var vFrom = new Vector2D(this.elem.x, this.elem.y);
-                var vTo = new Vector2D(this.elem.x - 500, this.elem.y);
-
-                this.elem instanceof DynamicGameObject ? this.elem.setMoveVector(vFrom, vTo, 1.5) : console.log("ehh");
-                this.elem.moving = true;
+                this.elem.changeDirection("left");
+                this.elem.vx = -this.elem.speed;
+                this.elem.vy = 0;
                 break;
             case "ArrowRight":
                 // code for "right arrow" key press.
-                var vFrom = new Vector2D(this.elem.x, this.elem.y);
-                var vTo = new Vector2D(this.elem.x + 500, this.elem.y);
-
-                this.elem instanceof DynamicGameObject ? this.elem.setMoveVector(vFrom, vTo, 1.5) : console.log("ehh");
-                this.elem.moving = true;
+                this.elem.changeDirection("right");
+                this.elem.vx = this.elem.speed;
+                this.elem.vy = 0;
                 break;
             default:
                 return; // Quit when this doesn't handle the key event.

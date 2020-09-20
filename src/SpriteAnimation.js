@@ -1,55 +1,132 @@
 "use strict";
 
-class SpriteAnimation {
+export default class SpriteAnimation {
 
     frameWidth;
     frameHeight;
 
-    rowIndex = 0;
-    columnIndex = 0;
-
-    rowMax
-    columnMax
-
     currentFrame = 0;
     maxFrame = 0;
 
-    spritesheet = new Image();
+    fpsCount = 0;
+    ANIMATION_FPS = 8;
 
-    constructor(imgSrc, fW, fH, rows, columns) {
-        this.spritesheet = imgSrc;
+    SCALE_FACTOR = 2;
+
+    spritesheet;
+
+    constructor(imgSrc, fW, fH, maxFrame) {
+
+        this.spritesheet = new Image();
+
+        this.spritesheet.onload = () => {
+
+            console.log("image is loaded");
+
+        };
+
+        this.spritesheet.src = imgSrc;
 
         this.frameWidth = fW;
         this.frameHeight = fH;
 
-        this.rowMax = rows;
-        this.columnMax = columns;
-
-        this.maxFrame = rows * columns;
+        this.maxFrame = maxFrame;
     }
 
-    animate() {
-        setInterval(function () {
-            // Pick a new frame
-            this.currentFrame++;
+    animate(context, obj, direction) {
 
-            // Make the frames loop
-            //let maxFrame = numColumns * numRows - 1;
+
+        this.fpsCount++;
+
+        if (this.fpsCount > this.ANIMATION_FPS) {
+
+            this.fpsCount = 0;
+
+            this.currentFrame++
+
             if (this.currentFrame > this.maxFrame) {
                 this.currentFrame = 0;
             }
+        }
 
-            // Update rows and columns
-            this.columnIndex = this.currentFrame % this.columnMax;
-            this.rowIndex = Math.floor(this.currentFrame / this.rowMax);
 
-            // Clear and draw
-            //context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(this.spritesheet, this.columnIndex * this.frameWidth, this.rowIndex * this.frameHeight, this.frameWidth, this.frameHeight, 10, 30, this.frameWidth, this.frameHeight);
+        context.save();
+        context.translate(obj.x, obj.y);
 
-//Wait for next step in the loop
-        }, 100).bind(this);
+        this.drawDirectional(direction, context);
+
+        context.restore();
     }
 
+    drawDirectional(direction, context) {
 
+        let sx = this.currentFrame * this.frameWidth;
+        let sy = 0;
+
+        let sWidth = this.frameWidth;
+        let sHeight = this.frameHeight;
+
+        switch (direction) {
+            case "left":
+                context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
+                    0 - sWidth / 4, // pos x
+                    0 - sWidth / 4, // pos y
+                    sWidth / this.SCALE_FACTOR, sHeight / this.SCALE_FACTOR);
+                break;
+            case "right":
+                context.scale(1, -1)
+                context.rotate(180 * Math.PI / 180);
+                context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
+                    0 - sWidth / 4, // pos x
+                    0 - sHeight / 4, // pos y
+                    sWidth / this.SCALE_FACTOR,
+                    sHeight / this.SCALE_FACTOR);
+                break;
+            case "up":
+                context.rotate(90 * Math.PI / 180);
+                context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
+                    0 - sWidth / 4, // pos x
+                    0 - sHeight / 4, // pos y
+                    sWidth / this.SCALE_FACTOR, sHeight / this.SCALE_FACTOR);
+
+                break;
+            case "down":
+                //context.scale(-1, 1)
+                context.rotate(270 * Math.PI / 180);
+                context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
+                    0 - sWidth / 4, // pos x
+                    0 - sHeight / 4, // pos y
+                    sWidth / this.SCALE_FACTOR, sHeight / this.SCALE_FACTOR);
+
+                break;
+            default:
+                break;
+            /**
+             * src from: https://www.w3schools.com/tags/canvas_drawimage.asp
+             * drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void;
+             *
+             * image: Image to draw <-- Mandatory
+             * sx: The x coordinate where to start clipping
+             * sy: The y coordinate where to start clipping
+             * sWidth: The width of the clipped image
+             * sHeight: The height of the clipped image
+             * x: The x coordinate where to place the image on the canvas <-- Mandatory
+             * y: The x coordinate where to place the image on the canvas <-- Mandatory
+             * width: The width of the image to use (stretch or reduce the image)
+             * height: The height of the image to use (stretch or reduce the image)
+
+             */
+        }
+    }
+
+}
+
+function foo(self) {
+    self.currentFrame++;
+
+    if (self.currentFrame > self.maxFrame) {
+        self.currentFrame = 0;
+    }
+    console.log(self.currentFrame);
+    return self.currentFrame;
 }
