@@ -17,9 +17,10 @@ export default class Game {
     }
 
     init() {
-        // Get a reference to the canvas
-        // this.canvas = document.getElementById('canvas');
-        // this.context = this.canvas.getContext('2d');
+
+        this.context.imageSmoothingEnabled = true;
+        this.context.imageSmoothingQuality = 'high';
+
         var g1 = new DynamicGameObject(0, 50, 100, 100);
         this.ioManager.bindElementToIOManager(g1);
         this.gameObjects.push(g1);

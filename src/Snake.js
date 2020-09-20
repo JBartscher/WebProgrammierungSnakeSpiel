@@ -1,12 +1,17 @@
-"strict mode";
+"use strict";
 
 import {DynamicGameObject} from "./GameObject.js";
 
-export default class Snake extends DynamicGameObject{
+export default class Snake extends DynamicGameObject {
 
-    SIZE = 16;
+    framehight = 64;
+    framewidth = 64;
 
-    constructor() {
-        super(0,0,16,16);
+    currentFrame
+
+    constructor(posX, posY) {
+        super(posX, posY, 16, 16);
+        this.img = new Image()
+        this.img.src = "../Assets/Snakehead.png"
     }
 }
