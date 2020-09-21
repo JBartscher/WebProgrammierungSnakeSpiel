@@ -1,7 +1,7 @@
 "use strict";
 
 import {DynamicGameObject} from "./GameObject.js";
-import IOManager from "./IOManager.js";
+import SnakeIOController from "./SnakeIOController.js";
 import Snake from "./Snake/Snake.js";
 
 export default class Game {
@@ -24,9 +24,8 @@ export default class Game {
         // var g1 = new DynamicGameObject(0, 50, 100, 100);
         // this.ioManager.bindElementToIOManager(g1);
 
-        let snake = new Snake(this.canvas.width / 2, this.canvas.height / 2);
-
-        new IOManager().bindElementToIOManager(snake);
+        let snake = new Snake(this.canvas.width / 2, this.canvas.height / 2, this);
+        new SnakeIOController().bindElementToIOManager(snake);
 
         this.gameObjects.push(snake);
 
@@ -60,8 +59,8 @@ export default class Game {
         //clear canvas
 
 
-        this.context.fillStyle = "#e70505";
-        this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) -2.5, 5, 5);
+        // this.context.fillStyle = "#e70505";
+        // this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) -2.5, 5, 5);
 
         // Draw fps to the screen
         this.context.fillStyle = 'white';

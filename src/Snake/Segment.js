@@ -1,28 +1,36 @@
 "use strict";
 
 import {DynamicGameObject} from "../GameObject.js";
+import Step from "./Step.js";
 
 export default class Segment extends DynamicGameObject {
 
     SCALE_FACTOR = 2;
     SEGMENT_SPRITE = "./Assets/Snakesegment.png"
+    currentStep;
 
-    constructor(x, y, w, h) {
+    constructor(x, y, w, h, direction = "left") {
         super(x, y, w, h);
+        // default Step
+        this.currentStep = new Step(direction);
 
+        // Sprite
         this.sprite = new Image();
-
         this.sprite.onload = () => {
-
             console.log("segment image is loaded");
-
         };
-
         this.sprite.src = this.SEGMENT_SPRITE;
     }
 
     changeDirection(direction) {
+        if(!['left', 'right', 'up', 'down'].includes(direction)){
+            throw ("Invalid direction");
+        }
         this.direction = direction;
+    }
+
+    update(timePassed) {
+        super.update(timePassed);
     }
 
     draw(context) {

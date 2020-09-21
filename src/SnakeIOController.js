@@ -1,9 +1,6 @@
 "use strict";
 
-import {DynamicGameObject} from "./GameObject.js";
-import {Vector2D} from "./Vector2D.js";
-
-export default class IOManager {
+export default class SnakeIOController {
 
     constructor() {
         window.addEventListener("keydown", this.handleInput.bind(this));
@@ -16,27 +13,19 @@ export default class IOManager {
 
         switch (event.key) {
             case "ArrowDown":
-                this.elem.changeDirection("down");
-                this.elem.vx = 0;
-                this.elem.vy = + this.elem.speed;
+                this.elem.head.changeDirection("down");
                 break;
             case "ArrowUp":
                 // code for "up arrow" key press.
-                this.elem.changeDirection("up");
-                this.elem.vx = 0;
-                this.elem.vy = -this.elem.speed;
+                this.elem.head.changeDirection("up");
                 break;
             case "ArrowLeft":
                 // code for "left arrow" key press.
-                this.elem.changeDirection("left");
-                this.elem.vx = -this.elem.speed;
-                this.elem.vy = 0;
+                this.elem.head.changeDirection("left");
                 break;
             case "ArrowRight":
                 // code for "right arrow" key press.
-                this.elem.changeDirection("right");
-                this.elem.vx = this.elem.speed;
-                this.elem.vy = 0;
+                this.elem.head.changeDirection("right");
                 break;
             default:
                 return; // Quit when this doesn't handle the key event.

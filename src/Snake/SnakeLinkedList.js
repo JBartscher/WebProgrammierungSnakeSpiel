@@ -17,4 +17,18 @@ export default class SnakeLinkedList extends LinkedList{
         }
         this.length++;
     }
+
+    cycle(nextStep){
+
+        let lastStep = this.head.data.currentStep;
+
+        for (let segment of this){
+            if(segment == this.head.data){
+                continue;
+            }
+            let tmp = segment.currentStep;
+            segment.currentStep = lastStep;
+            lastStep = tmp;
+        }
+    }
 }

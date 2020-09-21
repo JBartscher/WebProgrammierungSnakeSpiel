@@ -8,21 +8,21 @@ import Segment from "./Segment.js";
 
 export default class Snake extends DynamicGameObject {
 
-    framehight = 64;
-    framewidth = 64;
+    gameRef;
 
     tailLength = 1;
+
     direction = "left";
 
-    vx = 0; //velocity x
-    vy = 0; //velocity y
-
-    speed = 100; // movementspeed
+    speedMultiplikator = 1; // movementspeed
 
     segments = new SnakeLinkedList();
 
-    constructor(posX, posY) {
+    constructor(posX, posY, gameRef) {
         super(posX, posY, 0, 0);
+
+        this.gameRefrence = gameRef;
+
         //this.animation = new SpriteAnimation("../Assets/Snakehead.png", 64,64,4);
 
         this.head = new Head(posX, posY, 64, 64);
@@ -36,37 +36,37 @@ export default class Snake extends DynamicGameObject {
 
         this.segments.append(this.head)
         this.segments.append(this.tail)
-        this.segments.append(firstSegment);
+        this.segments.prependBeforeTail(firstSegment);
+
+        this.gameRefrence.gameObjects.push(this.head);
+        this.gameRefrence.gameObjects.push(this.tail);
+        this.gameRefrence.gameObjects.push(firstSegment);
+
+        console.log(this.segments);
     }
 
 
-    hop_i = 0;
-    hop_max = 32;
+    step_i = 0;
+    step_max = 32;
 
     update(timePassed) {
         super.update(timePassed);
 
-        this.hop_i++;
+        this.step_i = (this.step_i + 1 + timePassed) * this.speedMultiplikator;
 
-        if (this.hop_i > this.hop_max) {
-            this.x = this.x + this.vx * timePassed;
-            this.y = this.y + this.vy * timePassed;
+        if (this.step_i > this.step_max) {
+            this.step_i = 0
+            for (let segment of this.segments) {
+                segment.currentStep.doStep(segment);
+            }
+            // cycles the steps through the snake segments
+            this.segments.cycle();
         }
-        /*
-                this.x = this.x + this.vx * timePassed;
-        this.y = this.y + this.vy * timePassed;
-
-        for (var segment of this.segments){
-            segment.x = segment.x + this.vx * timePassed;
-            segment.y = segment.y + this.vy * timePassed;
-        }
-        */
-
     }
 
     draw(context) {
-        for (let segment of this.segments) {
-            segment.draw(context);
-        }
+        //for (let segment of this.segments) {
+        //    segment.draw(context);
+        //}
     }
 }

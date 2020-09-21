@@ -2,6 +2,7 @@
 
 import Segment from "./Segment.js";
 import SpriteAnimation from "../SpriteAnimation.js";
+import Step from "./Step.js";
 
 export default class Head extends Segment {
 
@@ -12,6 +13,16 @@ export default class Head extends Segment {
 
     draw(context) {
         this.animation.animate(context, this, this.direction)
+    }
+
+    changeDirection(direction) {
+        super.changeDirection(direction);
+
+        this.currentStep = new Step(direction);
+    }
+
+    update(timePassed) {
+        super.update(timePassed);
     }
 
 }

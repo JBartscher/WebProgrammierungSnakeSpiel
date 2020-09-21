@@ -1,7 +1,6 @@
 "use strict";
 
 import {easeLinear} from "./UtilFunctions.js";
-import {Vector2D} from "./Vector2D.js";
 
 class GameObject {
     constructor(x, y, w, h) {
@@ -55,18 +54,21 @@ class DynamicGameObject extends GameObject {
 }
 
 class StaticGameObject extends GameObject {
+
+    constructor(x, y, w, h) {
+        super(x, y, w, h);
+    }
+
     update(timePassed) {
         super.update(timePassed);
     }
 }
 
 function intersects(a, b){
-
         return (a.x + a.w) < (b.x + b.w)
             && (a.x) > (b.x)
             && (a.y) > (b.y)
             && (a.y + a.h) < (b.y + b.h);
-
 }
 
 
