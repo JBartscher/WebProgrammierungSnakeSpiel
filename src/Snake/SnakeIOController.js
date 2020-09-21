@@ -13,26 +13,34 @@ export default class SnakeIOController {
 
         switch (event.key) {
             case "ArrowDown":
-                this.elem.head.changeDirection("down");
+                if (this.elem.head.direction !== "up") {
+                    this.elem.head.changeDirection("down");
+                }
                 break;
             case "ArrowUp":
                 // code for "up arrow" key press.
-                this.elem.head.changeDirection("up");
+                if (this.elem.head.direction !== "down") {
+                    this.elem.head.changeDirection("up");
+                }
                 break;
             case "ArrowLeft":
                 // code for "left arrow" key press.
-                this.elem.head.changeDirection("left");
+                if (this.elem.head.direction !== "right") {
+                    this.elem.head.changeDirection("left");
+                }
                 break;
             case "ArrowRight":
                 // code for "right arrow" key press.
-                this.elem.head.changeDirection("right");
+                if (this.elem.head.direction !== "lft") {
+                    this.elem.head.changeDirection("right");
+                }
                 break;
             default:
                 return; // Quit when this doesn't handle the key event.
         }
     }
 
-    bindElementToIOManager(elem){
+    bindElementToIOManager(elem) {
         this.elem = elem;
     }
 

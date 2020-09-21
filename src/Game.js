@@ -1,7 +1,7 @@
 "use strict";
 
 import {DynamicGameObject} from "./GameObject.js";
-import SnakeIOController from "./SnakeIOController.js";
+import SnakeIOController from "./Snake/SnakeIOController.js";
 import Snake from "./Snake/Snake.js";
 
 export default class Game {
