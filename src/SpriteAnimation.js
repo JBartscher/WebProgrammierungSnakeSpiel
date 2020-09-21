@@ -70,7 +70,7 @@ export default class SpriteAnimation {
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
                     0 - sWidth / 4, // pos x
                     0 - sWidth / 4, // pos y
-                    sWidth / this.SCALE_FACTOR, sHeight / this.SCALE_FACTOR);
+                    sWidth / 2, sHeight / 2 );
                 break;
             case "right":
                 context.scale(1, -1)
@@ -78,15 +78,15 @@ export default class SpriteAnimation {
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
                     0 - sWidth / 4, // pos x
                     0 - sHeight / 4, // pos y
-                    sWidth / this.SCALE_FACTOR,
-                    sHeight / this.SCALE_FACTOR);
+                    sWidth ,
+                    sHeight );
                 break;
             case "up":
                 context.rotate(90 * Math.PI / 180);
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
                     0 - sWidth / 4, // pos x
                     0 - sHeight / 4, // pos y
-                    sWidth / this.SCALE_FACTOR, sHeight / this.SCALE_FACTOR);
+                    sWidth , sHeight );
 
                 break;
             case "down":
@@ -95,7 +95,7 @@ export default class SpriteAnimation {
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
                     0 - sWidth / 4, // pos x
                     0 - sHeight / 4, // pos y
-                    sWidth / this.SCALE_FACTOR, sHeight / this.SCALE_FACTOR);
+                    sWidth , sHeight );
 
                 break;
             default:

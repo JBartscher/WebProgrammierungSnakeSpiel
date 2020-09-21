@@ -20,8 +20,8 @@ class GameObject {
     }
 
     draw(context) {
-        context.fillStyle = "#1d5998";
-        context.fillRect(this.x, this.y, this.w, this.h);
+        context.fillStyle = "#c34d4d";
+        context.fillRect(this.x - (this.w /2), this.y, this.w, this.h);
     }
 }
 
@@ -48,7 +48,8 @@ class DynamicGameObject extends GameObject {
     }
 
     update(timePassed) {
-        super.update(timePassed);;
+        super.update(timePassed);
+        ;
     }
 
 }
@@ -62,13 +63,17 @@ class StaticGameObject extends GameObject {
     update(timePassed) {
         super.update(timePassed);
     }
+
+    draw(context) {
+        super.draw(context);
+    }
 }
 
-function intersects(a, b){
-        return (a.x + a.w) < (b.x + b.w)
-            && (a.x) > (b.x)
-            && (a.y) > (b.y)
-            && (a.y + a.h) < (b.y + b.h);
+function intersects(a, b) {
+    return (a.x + a.w) < (b.x + b.w)
+        && (a.x) > (b.x)
+        && (a.y) > (b.y)
+        && (a.y + a.h) < (b.y + b.h);
 }
 
 

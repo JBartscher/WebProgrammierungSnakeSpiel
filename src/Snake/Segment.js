@@ -48,8 +48,8 @@ export default class Segment extends DynamicGameObject {
                 context.drawImage(this.sprite,
                     0 - this.w / 4, // pos x
                     0 - this.h / 4, // pos y
-                    this.w / this.SCALE_FACTOR,
-                    this.h / this.SCALE_FACTOR);
+                    this.w ,
+                    this.h );
                 break;
             case "right":
                 context.scale(1, -1)
@@ -57,15 +57,15 @@ export default class Segment extends DynamicGameObject {
                 context.drawImage(this.sprite,
                     0 - this.w / 4, // pos x
                     0 - this.h / 4, // pos y
-                    this.w / this.SCALE_FACTOR,
-                    this.h / this.SCALE_FACTOR);
+                    this.w ,
+                    this.h );
                 break;
             case "up":
                 context.rotate(90 * Math.PI / 180);
                 context.drawImage(this.sprite,
                     0 - this.w / 4, // pos x
                     0 - this.h / 4, // pos y
-                    this.w / this.SCALE_FACTOR, this.h / this.SCALE_FACTOR);
+                    this.w , this.h );
 
                 break;
             case "down":
@@ -74,7 +74,7 @@ export default class Segment extends DynamicGameObject {
                 context.drawImage(this.sprite,
                     0 - this.w / 4, // pos x
                     0 - this.h / 4, // pos y
-                    this.w / this.SCALE_FACTOR, this.h / this.SCALE_FACTOR);
+                    this.w , this.h );
                 break;
             default:
                 break;

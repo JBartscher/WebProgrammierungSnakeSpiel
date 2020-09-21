@@ -25,13 +25,13 @@ export default class Snake extends DynamicGameObject {
 
         //this.animation = new SpriteAnimation("../Assets/Snakehead.png", 64,64,4);
 
-        this.head = new Head(posX, posY, 64, 64);
+        this.head = new Head(posX, posY, 32, 32);
         this.head.changeDirection("left");
 
-        this.tail = new Tail(this.head.x + 64, posY, 64, 64);
+        this.tail = new Tail(this.head.x + 64, posY, 32, 32);
         this.tail.changeDirection("left");
 
-        let firstSegment = new Segment(this.head.x + 32, posY, 64, 64)
+        let firstSegment = new Segment(this.head.x + 32, posY, 32, 32)
         firstSegment.changeDirection("left");
 
         this.segments.append(this.head)
