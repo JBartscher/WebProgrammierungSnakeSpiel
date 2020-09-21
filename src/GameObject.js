@@ -72,5 +72,5 @@ function intersects(a, b){
 }
 
 
-export {DynamicGameObject, StaticGameObject};
+export {DynamicGameObject, StaticGameObject, intersects};
 

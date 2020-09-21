@@ -1,6 +1,6 @@
 "use strict";
 
-import {DynamicGameObject} from "../GameObject.js";
+import {DynamicGameObject, intersects} from "../GameObject.js";
 import Tail from "./Tail.js";
 import Head from "./Head.js";
 import SnakeLinkedList from "./SnakeLinkedList.js";
@@ -8,7 +8,7 @@ import Segment from "./Segment.js";
 
 export default class Snake extends DynamicGameObject {
 
-    gameRef;
+    gameRefrence;
 
     tailLength = 1;
 
@@ -58,15 +58,23 @@ export default class Snake extends DynamicGameObject {
             this.step_i = 0
             for (let segment of this.segments) {
                 segment.currentStep.doStep(segment);
+                this.check_collisions();
             }
             // cycles the steps through the snake segments
             this.segments.cycle();
         }
     }
 
+    check_collisions() {
+        for (let obj of this.gameRefrence.gameObjects) {
+            if (intersects(this.head, obj)) {
+                alert("snake_head intersects")
+            }
+        }
+
+    }
+
     draw(context) {
-        //for (let segment of this.segments) {
-        //    segment.draw(context);
-        //}
+        //draw is handeld by game now
     }
 }

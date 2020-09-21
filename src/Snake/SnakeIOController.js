@@ -31,7 +31,7 @@ export default class SnakeIOController {
                 break;
             case "ArrowRight":
                 // code for "right arrow" key press.
-                if (this.elem.head.direction !== "lft") {
+                if (this.elem.head.direction !== "left") {
                     this.elem.head.changeDirection("right");
                 }
                 break;
