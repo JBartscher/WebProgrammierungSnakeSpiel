@@ -3,9 +3,10 @@
 import {StaticGameObject} from "../GameObject.js";
 
 export default class Point extends StaticGameObject {
-    static SIZE = 16;
+    static SIZE = 32;
 
     constructor(x, y, w, h) {
-        super(x, y, SIZE, SIZE);
+        alert("position x: " + x + " y: "+  y);
+        super(x + SIZE /4, y, SIZE, SIZE);
     }
 }

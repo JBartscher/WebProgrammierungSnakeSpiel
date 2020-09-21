@@ -21,7 +21,7 @@ class GameObject {
 
     draw(context) {
         context.fillStyle = "#c34d4d";
-        context.fillRect(this.x - (this.w /2), this.y, this.w, this.h);
+        context.fillRect(this.x, this.y, this.w, this.h);
     }
 }
 

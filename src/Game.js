@@ -61,8 +61,8 @@ export default class Game {
         //clear canvas
 
 
-        // this.context.fillStyle = "#e70505";
-        // this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) -2.5, 5, 5);
+        this.context.fillStyle = "#e70505";
+        this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) -2.5, 5, 5);
 
         // Draw fps to the screen
         this.context.fillStyle = 'white';

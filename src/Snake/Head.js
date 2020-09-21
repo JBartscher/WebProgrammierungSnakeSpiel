@@ -7,7 +7,8 @@ import Step from "./Step.js";
 export default class Head extends Segment {
 
     constructor(x, y, w, h) {
-        super(x, y, w, h);
+        // w/2 to ensure the snake "fits" in the grid
+        super(x + w/2, y, w, h);
         this.animation = new SpriteAnimation("./Assets/Snakehead.png", 64, 64, 4);
     }
 
