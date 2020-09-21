@@ -68,33 +68,35 @@ export default class SpriteAnimation {
         switch (direction) {
             case "left":
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
-                    0 - sWidth / 4, // pos x
-                    0 - sWidth / 4, // pos y
-                    sWidth / 2, sHeight / 2 );
+                    0, // pos x
+                    0, // pos y
+                    sWidth / 2, sHeight / 2);
                 break;
             case "right":
                 context.scale(1, -1)
                 context.rotate(180 * Math.PI / 180);
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
-                    0 - sWidth / 4, // pos x
-                    0 - sHeight / 4, // pos y
+                    0 - 32, // pos x
+                    0, // pos y
                     sWidth / 2,
-                    sHeight/ 2 );
+                    sHeight / 2);
                 break;
             case "up":
                 context.rotate(90 * Math.PI / 180);
+                // context.scale(-1, 1)
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
-                    0 - sWidth / 4, // pos x
-                    0 - sHeight / 4, // pos y
+                    0, // pos x
+                    0 - 32, // pos y
                     sWidth / 2, sHeight / 2);
 
                 break;
             case "down":
-                //context.scale(-1, 1)
                 context.rotate(270 * Math.PI / 180);
+                // context.scale(1, -1)
+                // context.rotate(270 * Math.PI / 180);
                 context.drawImage(this.spritesheet, sx, sy, sWidth, sHeight,
-                    0 - sWidth / 4, // pos x
-                    0 - sHeight / 4, // pos y
+                    0 - 32, // pos x
+                    0, // pos y
                     sWidth / 2, sHeight / 2);
 
                 break;

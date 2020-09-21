@@ -23,7 +23,7 @@ export default class Segment extends DynamicGameObject {
     }
 
     changeDirection(direction) {
-        if(!['left', 'right', 'up', 'down'].includes(direction)){
+        if (!['left', 'right', 'up', 'down'].includes(direction)) {
             throw ("Invalid direction");
         }
         this.direction = direction;
@@ -46,35 +46,35 @@ export default class Segment extends DynamicGameObject {
         switch (this.direction) {
             case "left":
                 context.drawImage(this.sprite,
-                    0 - this.w / 2, // pos x
-                    0 - this.h / 2, // pos y
-                    this.w ,
-                    this.h );
+                    0, // pos x
+                    0, // pos y
+                    this.w,
+                    this.h);
                 break;
             case "right":
                 context.scale(1, -1)
                 context.rotate(180 * Math.PI / 180);
                 context.drawImage(this.sprite,
-                    0 - this.w / 2, // pos x
-                    0 - this.h / 2, // pos y
-                    this.w ,
-                    this.h );
+                    0 - 32, // pos x
+                    0, // pos y
+                    this.w,
+                    this.h);
                 break;
             case "up":
                 context.rotate(90 * Math.PI / 180);
                 context.drawImage(this.sprite,
-                    0 - this.w / 2, // pos x
-                    0 - this.h / 2, // pos y
-                    this.w , this.h );
+                    0, // pos x
+                    0 - 32, // pos y
+                    this.w, this.h);
 
                 break;
             case "down":
                 //context.scale(-1, 1)
                 context.rotate(270 * Math.PI / 180);
                 context.drawImage(this.sprite,
-                    0 - this.w / 2, // pos x
-                    0 - this.h / 2, // pos y
-                    this.w , this.h );
+                    0 - 32, // pos x
+                    0, // pos y
+                    this.w, this.h);
                 break;
             default:
                 break;

@@ -13,6 +13,9 @@ export default class Head extends Segment {
     }
 
     draw(context) {
+        context.fillStyle = "#cf991a";
+        context.fillRect(this.x, this.y, this.w, this.h);
+
         this.animation.animate(context, this, this.direction)
     }
 

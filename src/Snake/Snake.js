@@ -19,6 +19,9 @@ export default class Snake extends DynamicGameObject {
     segments = new SnakeLinkedList();
 
     constructor(posX, posY, gameRef) {
+
+        console.log("x:" + posX + " y:"+posY);
+        posX = posX + 16;
         super(posX, posY, 0, 0);
 
         this.gameRefrence = gameRef;
@@ -68,7 +71,7 @@ export default class Snake extends DynamicGameObject {
     check_collisions() {
         for (let obj of this.gameRefrence.gameObjects) {
             if (intersects(this.head, obj)) {
-                alert("snake_head intersects")
+                console.log("snake_head intersects");
             }
         }
 

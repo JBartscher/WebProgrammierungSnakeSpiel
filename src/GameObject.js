@@ -70,10 +70,27 @@ class StaticGameObject extends GameObject {
 }
 
 function intersects(a, b) {
+    if(a === b){
+        return false;
+    }
+
+    return rectIntersect(a,b);
+    /*
     return (a.x + a.w) < (b.x + b.w)
         && (a.x) > (b.x)
         && (a.y) > (b.y)
         && (a.y + a.h) < (b.y + b.h);
+
+     */
+}
+
+function rectIntersect(a, b) {
+    // Check x and y for overlap
+    if (b.x > a.w + a.x || a.x > b.w + b.x || b.y > a.h + a.y || a.y > b.h + b.y) {
+        return false;
+    }
+    console.log(a + "  collides with  " + b);
+    return true;
 }
 
 
