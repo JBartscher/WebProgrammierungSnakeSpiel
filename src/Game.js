@@ -27,8 +27,8 @@ export default class Game {
         // var g1 = new DynamicGameObject(0, 50, 100, 100);
         // this.ioManager.bindElementToIOManager(g1);
 
-        //let snake = new Snake(Math.floor(this.canvas.width / 2 / 32) * 32, Math.floor(this.canvas.height / 2 / 32) * 32, this);
-        let snake = new Snake(0, 0, this);
+        let snake = new Snake(Math.floor(this.canvas.width / 2 / 32) * 32, Math.floor(this.canvas.height / 2 / 32) * 32, this);
+        //let snake = new Snake(0, 0, this);
 
         new SnakeIOController().bindElementToIOManager(snake);
         this.gameObjects.push(snake);
