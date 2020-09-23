@@ -15,6 +15,8 @@ export default class Game {
         this.gameObjects = new Array();
 
         this.oldTimeStamp = 0;
+
+        this.score = 0;
     }
 
     init() {
@@ -25,11 +27,14 @@ export default class Game {
         // var g1 = new DynamicGameObject(0, 50, 100, 100);
         // this.ioManager.bindElementToIOManager(g1);
 
-        let snake = new Snake(Math.floor(this.canvas.width / 2 / 32 ) * 32, Math.floor(this.canvas.height / 2 / 32 ) * 32, this);
+        //let snake = new Snake(Math.floor(this.canvas.width / 2 / 32) * 32, Math.floor(this.canvas.height / 2 / 32) * 32, this);
+        let snake = new Snake(0, 0, this);
+
         new SnakeIOController().bindElementToIOManager(snake);
         this.gameObjects.push(snake);
 
-        this.gameObjects.push(new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects));
+        this.currentPoint = new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects);
+        this.gameObjects.push(this.currentPoint);
 
         // Start the first frame request
         window.requestAnimationFrame(this.gameLoop.bind(this));
@@ -59,21 +64,29 @@ export default class Game {
 
     drawHud() {
         //clear canvas
-
-
         this.context.fillStyle = "#e70505";
-        this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) -2.5, 5, 5);
+        this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) - 2.5, 5, 5);
 
         // Draw fps to the screen
+        /*
         this.context.fillStyle = 'white';
         this.context.fillRect(0, 0, 200, 100);
         this.context.font = '25px Arial';
         this.context.fillStyle = 'black';
         this.context.fillText("FPS: " + this.fps, 10, 30);
-
+        this.context.fillText("Score: " + this.score, 10, 60);
+        */
         this.drawGrid();
 
 
+    }
+
+    addPoint() {
+        this.score++;
+        let idx = this.gameObjects.indexOf(this.currentPoint);
+        this.gameObjects.splice(idx, 1);
+        this.currentPoint = new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects);
+        this.gameObjects.push(this.currentPoint);
     }
 
     drawGrid() {

@@ -34,4 +34,36 @@ export default class Step{
         segment.changeDirection(this.direction);
 
     }
+
+    /**
+     * Does an inverted step.
+     * Necessary to let the tail do a step in the opposite direction of which it moves to make space for a new segment.
+     * @param segment segment which will be moved opposite to its current step direction
+     */
+    doInvertedStep(segment){
+
+        switch (this.direction) {
+            case "left":
+                // code for "left" step
+                segment.x = segment.x + STEP_LENGTH;
+                break;
+            case "right":
+                // code for "right" step
+                segment.x = segment.x - STEP_LENGTH;
+                break;
+            case "up":
+                // code for "up" step
+                segment.y = segment.y + STEP_LENGTH;
+                break;
+            case "down":
+                // code for "down" step
+                segment.y = segment.y - STEP_LENGTH;
+                break;
+            default:
+                return; // Quit when this doesn't handle the key event.
+        }
+        //
+        segment.changeDirection(this.direction);
+
+    }
 }

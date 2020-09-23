@@ -70,11 +70,11 @@ class StaticGameObject extends GameObject {
 }
 
 function intersects(a, b) {
-    if(a === b){
+    if (a === b) {
         return false;
     }
 
-    return rectIntersect(a,b);
+    return rectIntersect(a, b);
     /*
     return (a.x + a.w) < (b.x + b.w)
         && (a.x) > (b.x)
@@ -82,6 +82,13 @@ function intersects(a, b) {
         && (a.y + a.h) < (b.y + b.h);
 
      */
+}
+
+function overlaps(a, b) {
+    if (a === b) {
+        return false;
+    }
+    return a.x === b.x && a.y === b.y;
 }
 
 function rectIntersect(a, b) {
@@ -94,5 +101,5 @@ function rectIntersect(a, b) {
 }
 
 
-export {DynamicGameObject, StaticGameObject, intersects};
+export {DynamicGameObject, StaticGameObject, intersects, overlaps};
 

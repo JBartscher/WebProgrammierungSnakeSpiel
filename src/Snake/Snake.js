@@ -1,16 +1,17 @@
 "use strict";
 
-import {DynamicGameObject, intersects} from "../GameObject.js";
+import {DynamicGameObject, intersects, overlaps} from "../GameObject.js";
 import Tail from "./Tail.js";
 import Head from "./Head.js";
 import SnakeLinkedList from "./SnakeLinkedList.js";
 import Segment from "./Segment.js";
+import Point from "../Point/Point.js";
 
 export default class Snake extends DynamicGameObject {
 
     gameRefrence;
 
-    tailLength = 1;
+    tailLength = 2; // number of segments + tail but without the head
 
     direction = "left";
 
@@ -21,7 +22,6 @@ export default class Snake extends DynamicGameObject {
     constructor(posX, posY, gameRef) {
 
         console.log("x:" + posX + " y:"+posY);
-        posX = posX + 16;
         super(posX, posY, 0, 0);
 
         this.gameRefrence = gameRef;
@@ -56,13 +56,13 @@ export default class Snake extends DynamicGameObject {
         super.update(timePassed);
 
         this.step_i = (this.step_i + 1 + timePassed) * this.speedMultiplikator;
-
+        this.check_collisions();
         if (this.step_i > this.step_max) {
             this.step_i = 0
             for (let segment of this.segments) {
                 segment.currentStep.doStep(segment);
-                this.check_collisions();
             }
+            this.check_collisions();
             // cycles the steps through the snake segments
             this.segments.cycle();
         }
@@ -70,8 +70,22 @@ export default class Snake extends DynamicGameObject {
 
     check_collisions() {
         for (let obj of this.gameRefrence.gameObjects) {
-            if (intersects(this.head, obj)) {
-                console.log("snake_head intersects");
+            if (overlaps(this.head, obj)) {
+                if(obj === this.gameRefrence.currentPoint){
+                    this.gameRefrence.addPoint();
+
+                    let newSegment = new Segment(this.tail.x, this.tail.y, 32, 32)
+                    newSegment.direction = this.tail.direction;
+                    newSegment.currentStep = this.tail.currentStep;
+
+                    this.tail.currentStep.doInvertedStep(this.tail);
+
+                    this.gameRefrence.gameObjects.push(newSegment);
+                    this.segments.prependBeforeTail(newSegment);
+
+                    this.tailLength++;
+                }
+                console.log("snake_head overlaps");
             }
         }
 
@@ -80,4 +94,6 @@ export default class Snake extends DynamicGameObject {
     draw(context) {
         //draw is handeld by game now
     }
+
+
 }

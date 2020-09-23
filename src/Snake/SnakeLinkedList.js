@@ -11,9 +11,15 @@ export default class SnakeLinkedList extends LinkedList{
         if (this.isEmpty()) {
             throw("prependBeforeTail() is only allowed when the snake is properly initialized (eg. has head and tail)");
         } else {
-            this.tail.prev.next = node;
-            this.tail.prev = node;
+            // setting new references
+            node.prev = this.tail.prev
             node.next = this.tail;
+
+            // update prev next
+            node.prev.next = node;
+
+            // update tail prev
+            this.tail.prev = node;
         }
         this.length++;
     }
