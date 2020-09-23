@@ -21,7 +21,7 @@ export default class Snake extends DynamicGameObject {
 
     constructor(posX, posY, gameRef) {
 
-        console.log("x:" + posX + " y:"+posY);
+        console.log("x:" + posX + " y:" + posY);
         super(posX, posY, 0, 0);
 
         this.gameRefrence = gameRef;
@@ -46,6 +46,15 @@ export default class Snake extends DynamicGameObject {
         this.gameRefrence.gameObjects.push(firstSegment);
 
         console.log(this.segments);
+
+        let increaseGameSpeedFunction = this.increaseGameSpeed;
+        let contxt = this;
+
+        //every 3 seconds
+        setInterval(function () {
+            increaseGameSpeedFunction.call(contxt);
+        }, 3000);
+
     }
 
 
@@ -71,7 +80,7 @@ export default class Snake extends DynamicGameObject {
     check_collisions() {
         for (let obj of this.gameRefrence.gameObjects) {
             if (overlaps(this.head, obj)) {
-                if(obj === this.gameRefrence.currentPoint){
+                if (obj === this.gameRefrence.currentPoint) {
                     this.gameRefrence.addPoint();
 
                     let newSegment = new Segment(this.tail.x, this.tail.y, 32, 32)
@@ -93,6 +102,14 @@ export default class Snake extends DynamicGameObject {
 
     draw(context) {
         //draw is handeld by game now
+    }
+
+    increaseGameSpeed() {
+        this.speedMultiplikator = this.speedMultiplikator + 0.1;
+        //maximum gamespeed is 3.0
+        this.speedMultiplikator = Math.min(this.speedMultiplikator, 3.0);
+
+        console.log("the gamespeed is now: " + this.speedMultiplikator)
     }
 
 
