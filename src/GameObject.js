@@ -23,6 +23,20 @@ class GameObject {
         context.fillStyle = "#c34d4d";
         context.fillRect(this.x, this.y, this.w, this.h);
     }
+
+    /**
+     * checks whether this placeble intersects with anotehr one. It is important to note that the offset is only
+     * computed from this object, not both.
+     *
+     * @param other the other placeble
+     * @return true if intersects otherwise false
+     */
+    intersects(other) {
+        return (this.x < other.x + other.w &&
+            this.x + this.w > other.x &&
+            this.y < other.y + other.h &&
+            this.y + this.h > other.y);
+    }
 }
 
 class DynamicGameObject extends GameObject {
@@ -69,21 +83,6 @@ class StaticGameObject extends GameObject {
     }
 }
 
-function intersects(a, b) {
-    if (a === b) {
-        return false;
-    }
-
-    return rectIntersect(a, b);
-    /*
-    return (a.x + a.w) < (b.x + b.w)
-        && (a.x) > (b.x)
-        && (a.y) > (b.y)
-        && (a.y + a.h) < (b.y + b.h);
-
-     */
-}
-
 function overlaps(a, b) {
     if (a === b) {
         return false;
@@ -91,15 +90,6 @@ function overlaps(a, b) {
     return a.x === b.x && a.y === b.y;
 }
 
-function rectIntersect(a, b) {
-    // Check x and y for overlap
-    if (b.x > a.w + a.x || a.x > b.w + b.x || b.y > a.h + a.y || a.y > b.h + b.y) {
-        return false;
-    }
-    console.log(a + "  collides with  " + b);
-    return true;
-}
 
-
-export {DynamicGameObject, StaticGameObject, intersects, overlaps};
+export {DynamicGameObject, StaticGameObject};
 

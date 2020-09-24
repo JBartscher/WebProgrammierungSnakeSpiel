@@ -1,13 +1,14 @@
 "use strict";
 
-import {DynamicGameObject} from "./GameObject.js";
+import {DynamicGameObject, StaticGameObject} from "./GameObject.js";
 import SnakeIOController from "./Snake/SnakeIOController.js";
 import Snake from "./Snake/Snake.js";
 import PointSpawner from "./Point/PointSpawner.js";
+import Wall from "./Wall.js";
 
 export default class Game {
 
-    constructor() {
+    constructor(walls = true) {
 
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
@@ -17,9 +18,11 @@ export default class Game {
         this.oldTimeStamp = 0;
 
         this.score = 0;
+
+
     }
 
-    init() {
+    init(walls) {
 
         this.context.imageSmoothingEnabled = true;
         this.context.imageSmoothingQuality = 'high';
@@ -33,6 +36,11 @@ export default class Game {
         new SnakeIOController().bindElementToIOManager(snake);
         this.gameObjects.push(snake);
 
+        // needs to be excecutet before a new point is created to ensure that the point is not "in" a wall.
+        if (walls) {
+            this.createWalls();
+        }
+        // point that the snake can eat
         this.currentPoint = new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects);
         this.gameObjects.push(this.currentPoint);
 
@@ -109,5 +117,22 @@ export default class Game {
             ctx.lineTo(this.canvas.width - pR, y)
         }
         ctx.stroke()
+    }
+
+    displayGameOver(){
+        alert("You´ve lost!. Points: " + this.score);
+        window.requestAnimationFrame();
+    }
+
+    createWalls(){
+        const wallLeft = new Wall(0, 0, 32, this.canvas.height);
+        this.gameObjects.push(wallLeft);
+        const wallRight = new Wall(this.canvas.width - 32, 0, 32, this.canvas.height);
+        this.gameObjects.push(wallRight);
+
+        const wallTop = new Wall(0, 0, this.canvas.width, 32);
+        this.gameObjects.push(wallTop);
+        const wallBottom = new Wall(0, this.canvas.height - 32, this.canvas.width, 32);
+        this.gameObjects.push(wallBottom);
     }
 }

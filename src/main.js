@@ -18,4 +18,4 @@ for (var obj of lL) {
 
 
 let game = new Game();
-game.init();
+game.init(true);

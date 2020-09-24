@@ -2,7 +2,7 @@
 
 
 import Point from "./Point.js";
-import {intersects, StaticGameObject} from "../GameObject.js";
+import {StaticGameObject} from "../GameObject.js";
 
 export default class PointSpawner {
     constructor(displayWidth, displayHeight) {
@@ -16,14 +16,16 @@ export default class PointSpawner {
 
         let newPoint = new StaticGameObject(x, y, Point.SIZE, Point.SIZE);
 
+        //let newPoint = new StaticGameObject(0, 0, Point.SIZE, Point.SIZE);
+
         for (let obj of currentExisitingGameObjects) {
-            if (intersects(newPoint, obj)) {
-                this.spawnNewPoint(currentExisitingGameObjects);
-                return;
+            // also handles wall detection
+            if (newPoint.intersects(obj)) {
+                return this.spawnNewPoint(currentExisitingGameObjects);
             }
-            console.log(newPoint);
-            return newPoint;
         }
+        console.log(newPoint);
+        return newPoint;
     }
 }
 

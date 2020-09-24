@@ -1,11 +1,11 @@
 "use strict";
 
-import {DynamicGameObject, intersects, overlaps} from "../GameObject.js";
+import {DynamicGameObject} from "../GameObject.js";
 import Tail from "./Tail.js";
 import Head from "./Head.js";
 import SnakeLinkedList from "./SnakeLinkedList.js";
 import Segment from "./Segment.js";
-import Point from "../Point/Point.js";
+import Wall from "../Wall.js";
 
 export default class Snake extends DynamicGameObject {
 
@@ -26,8 +26,6 @@ export default class Snake extends DynamicGameObject {
 
         this.gameRefrence = gameRef;
 
-        //this.animation = new SpriteAnimation("../Assets/Snakehead.png", 64,64,4);
-
         this.head = new Head(posX, posY, 32, 32);
         this.head.changeDirection("left");
 
@@ -45,15 +43,16 @@ export default class Snake extends DynamicGameObject {
         this.gameRefrence.gameObjects.push(this.tail);
         this.gameRefrence.gameObjects.push(firstSegment);
 
-        console.log(this.segments);
-
+        // function that will be called periodically
         let increaseGameSpeedFunction = this.increaseGameSpeed;
-        let contxt = this;
+
+        // is needed to apply the context to the setInterval function
+        let context = this;
 
         //every 3 seconds
-        setInterval(function () {
-            increaseGameSpeedFunction.call(contxt);
-        }, 3000);
+        this.gamespeedIncreaseIntervall = setInterval(function () {
+            increaseGameSpeedFunction.call(context);
+        }, 5000);
 
     }
 
@@ -79,31 +78,32 @@ export default class Snake extends DynamicGameObject {
 
     check_collisions() {
         for (let obj of this.gameRefrence.gameObjects) {
-            if (overlaps(this.head, obj)) {
+            // collision with self or "meta" object is not meant to be handled
+            if (obj instanceof Head || obj instanceof Snake) {
+                continue;
+            }
+
+            if (this.head.intersects(obj)) {
+                console.log("snake_head intersects, its a :" + obj);
                 if (obj === this.gameRefrence.currentPoint) {
-                    this.gameRefrence.addPoint();
-
-                    let newSegment = new Segment(this.tail.x, this.tail.y, 32, 32)
-                    newSegment.direction = this.tail.direction;
-                    newSegment.currentStep = this.tail.currentStep;
-
-                    this.tail.currentStep.doInvertedStep(this.tail);
-
-                    this.gameRefrence.gameObjects.push(newSegment);
-                    this.segments.prependBeforeTail(newSegment);
-
+                    this.gameRefrence.addPoint(); // increases score by 1
+                    this.addSegment();
                     this.tailLength++;
+                } else if (obj instanceof Wall || obj instanceof Segment || obj instanceof Tail) {
+                    clearInterval(this.gamespeedIncreaseIntervall);
+                    this.gameRefrence.displayGameOver();
                 }
-                console.log("snake_head overlaps");
             }
         }
-
     }
 
     draw(context) {
         //draw is handeld by game now
     }
 
+    /**
+     * is called periodically to increase the gamespeed every 3 seconds up to a maximum  of 3x the normal gamespeed.
+     */
     increaseGameSpeed() {
         this.speedMultiplikator = this.speedMultiplikator + 0.1;
         //maximum gamespeed is 3.0
@@ -112,5 +112,15 @@ export default class Snake extends DynamicGameObject {
         console.log("the gamespeed is now: " + this.speedMultiplikator)
     }
 
+    addSegment() {
+        let newSegment = new Segment(this.tail.x, this.tail.y, 32, 32)
+        newSegment.direction = this.tail.direction;
+        newSegment.currentStep = this.tail.currentStep;
+
+        this.tail.currentStep.doInvertedStep(this.tail);
+
+        this.gameRefrence.gameObjects.push(newSegment);
+        this.segments.prependBeforeTail(newSegment);
+    }
 
 }
