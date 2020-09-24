@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
 
     <title>HTML5 Snake Game</title>
-    <meta name="description" content="A basic HTML5 game">
+    <meta content="A basic HTML5 snake game" name="description">
     <meta name="author" content="Jasper Bartscher">
-    <!-- defer= erst ausgeführt wenn ganzes Dokument geladen ist -->
-    <!-- async= asynchrones laden der Skriptdatei -->
+
     <script type="module" src="src/main.js"></script>
-    <link rel="stylesheet" href="style.css">
+
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/canvas.css" rel="stylesheet">
 </head>
-<body scroll="no">
+<body>
 <main>
-    <!--Your canvas will come here -->
+    <!--game canvas -->
     <canvas id="canvas" width="640" height="480">
         Your browser does not support the HTML5 canvas tag.
     </canvas>
