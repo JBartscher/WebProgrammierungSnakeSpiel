@@ -2,7 +2,7 @@
 
 import {StaticGameObject} from "./GameObject.js";
 
-const WALL_COLOR = "#212121"
+const WALL_COLOR = "#162203"
 
 export default class Wall extends StaticGameObject{
     constructor(x, y, w, h) {

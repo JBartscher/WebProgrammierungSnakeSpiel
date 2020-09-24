@@ -11,6 +11,7 @@ export default class PointSpawner {
     }
 
     spawnNewPoint(currentExisitingGameObjects) {
+        // get a random position on the field
         let x = Math.floor(getRandomInt(this.xMax) / 32) * 32;
         let y = Math.floor(getRandomInt(this.yMax) / 32) * 32
 
@@ -24,7 +25,7 @@ export default class PointSpawner {
                 return this.spawnNewPoint(currentExisitingGameObjects);
             }
         }
-        console.log(newPoint);
+        // no collisions with existing game objects => return this point
         return newPoint;
     }
 }

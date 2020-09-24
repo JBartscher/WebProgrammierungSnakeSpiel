@@ -6,6 +6,8 @@ import Snake from "./Snake/Snake.js";
 import PointSpawner from "./Point/PointSpawner.js";
 import Wall from "./Wall.js";
 
+const DEBUG = false;
+
 export default class Game {
 
     constructor(walls = true) {
@@ -72,18 +74,11 @@ export default class Game {
 
     drawHud() {
         //clear canvas
-        this.context.fillStyle = "#e70505";
-        this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) - 2.5, 5, 5);
+        if (DEBUG) {
+            this.context.fillStyle = "#e70505";
+            this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) - 2.5, 5, 5);
+        }
 
-        // Draw fps to the screen
-        /*
-        this.context.fillStyle = 'white';
-        this.context.fillRect(0, 0, 200, 100);
-        this.context.font = '25px Arial';
-        this.context.fillStyle = 'black';
-        this.context.fillText("FPS: " + this.fps, 10, 30);
-        this.context.fillText("Score: " + this.score, 10, 60);
-        */
         this.drawGrid();
 
 
@@ -119,12 +114,12 @@ export default class Game {
         ctx.stroke()
     }
 
-    displayGameOver(){
+    displayGameOver() {
         alert("You´ve lost!. Points: " + this.score);
         window.requestAnimationFrame();
     }
 
-    createWalls(){
+    createWalls() {
         const wallLeft = new Wall(0, 0, 32, this.canvas.height);
         this.gameObjects.push(wallLeft);
         const wallRight = new Wall(this.canvas.width - 32, 0, 32, this.canvas.height);

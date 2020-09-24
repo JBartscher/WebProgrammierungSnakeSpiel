@@ -63,7 +63,7 @@ export default class Snake extends DynamicGameObject {
     update(timePassed) {
         super.update(timePassed);
 
-        this.step_i = (this.step_i + 1 + timePassed) * this.speedMultiplikator;
+       // this.step_i = (this.step_i + 1 + timePassed) * this.speedMultiplikator;
         this.check_collisions();
         if (this.step_i > this.step_max) {
             this.step_i = 0
