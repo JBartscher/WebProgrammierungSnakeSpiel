@@ -1,6 +1,5 @@
 "use strict";
 
-import {DynamicGameObject, StaticGameObject} from "./GameObject.js";
 import SnakeIOController from "./Snake/SnakeIOController.js";
 import Snake from "./Snake/Snake.js";
 import PointSpawner from "./Point/PointSpawner.js";
@@ -15,7 +14,7 @@ export default class Game {
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
 
-        this.gameObjects = new Array();
+        this.gameObjects = [];
 
         this.oldTimeStamp = 0;
 
@@ -116,7 +115,23 @@ export default class Game {
 
     displayGameOver() {
         alert("You´ve lost!. Points: " + this.score);
-        window.requestAnimationFrame();
+        this.gameObjects = [];
+
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.context.fillStyle = "#13481c";
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        document.getElementById("canvas").style.display = "none";
+        document.getElementById("highscore_form").style.display = "flex";
+
+        document.getElementById("points_display").innerText = this.score;
+
+        let highscore = window.localStorage.getItem("highscore") || {};
+        alert(highscore);
+
+        window.cancelAnimationFrame();
+
+
     }
 
     createWalls() {

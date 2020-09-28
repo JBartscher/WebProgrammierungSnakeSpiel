@@ -11,13 +11,32 @@
 
     <link href="css/base.css" rel="stylesheet">
     <link href="css/canvas.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
 </head>
 <body>
 <main>
     <!--game canvas -->
-    <canvas id="canvas" width="640" height="480">
-        Your browser does not support the HTML5 canvas tag.
-    </canvas>
+
+    <div class="container">
+        <canvas height="480" id="canvas" width="640">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+        <div id="highscore_form">
+            <form>
+                <label for="points">Points:
+                    <input hidden id="points" name="points" type="number" value="">
+                    <p id="points_display"></p>
+                </label>
+                <label for="name">Name:
+                    <input id="name" name="name" type="text">
+                </label>
+                <input type="submit" value="send">
+            </form>
+        </div>
+    </div>
+    <aside>
+
+    </aside>
 </main>
 </body>
 </html>
