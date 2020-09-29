@@ -114,7 +114,7 @@ export default class Game {
     }
 
     displayGameOver() {
-        alert("You´ve lost!. Points: " + this.score);
+        // alert("You´ve lost!. Points: " + this.score);
         this.gameObjects = [];
 
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -123,11 +123,9 @@ export default class Game {
 
         document.getElementById("canvas").style.display = "none";
         document.getElementById("highscore_form").style.display = "flex";
+        document.getElementById("highscore_form").classList.add("tilt-in-fwd-tr");
 
         document.getElementById("points_display").innerText = this.score;
-
-        let highscore = window.localStorage.getItem("highscore") || {};
-        alert(highscore);
 
         window.cancelAnimationFrame();
 
