@@ -3,11 +3,24 @@ html, body {
     overflow-y: hidden;
 
     background-color: #13481c;
+
+    background: #0c4ab6;
+
+    background-image: -webkit-linear-gradient(top, #0c4ab6, #3366b4);
+    background-image: -moz-linear-gradient(top, #0c4ab6, #3366b4);
+    background-image: -ms-linear-gradient(top, #0c4ab6, #3366b4);
+    background-image: -o-linear-gradient(top, #0c4ab6, #3366b4);
+    background-image: linear-gradient(to bottom, #0c4ab6, #3366b4);
 }
 
 main {
     height: 100%;
+
+}
+
+.container {
     display: flex;
+    height: inherit;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
@@ -15,6 +28,21 @@ main {
 
 #canvas {
     background-color: #c6c6c6;
-    display: flex;
     height: 85%;
+}
+
+#highscore_form {
+    display: none;
+    color: white;
+    text-align: center;
+    font-family: Courier;
+    font-size: larger;
+
+    background: #3D94F6;
+
+    background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
+    background-image: linear-gradient(to bottom, #3D94F6, #1E62D0);
 }

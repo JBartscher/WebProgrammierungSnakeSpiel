@@ -1,19 +1,18 @@
 "use strict";
 
 import Game from "./Game.js";
-import LinkedList from "./lib/LinkedList.js";
 
 console.log("starting game");
 
 
-let lL = new LinkedList()
-lL.append("1 Element");
-lL.append("2 Element");
-lL.append("3 Element");
-lL.append("4 Element");
-
-for (var obj of lL) {
-    console.log(obj);
+let form = document.getElementById("highscore_form");
+form.onsubmit = function (e) {
+    e.preventDefault();
+    let date = new Date();
+    let highscore = JSON.parse(window.localStorage.getItem("highscore")) || [];
+    highscore.push({"name": e.target[1].value, "points": game.score, "timestamp": date.getTime()})
+    window.localStorage.setItem('highscore', JSON.stringify(highscore));
+    return false;
 }
 
 
