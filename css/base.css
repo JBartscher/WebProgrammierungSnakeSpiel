@@ -1,0 +1,12 @@
+html {
+    background-color: #e0e2e3;
+    min-width: 360px;
+}
+
+.container {
+    display: flex;
+    height: inherit;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}

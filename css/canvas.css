@@ -15,16 +15,8 @@ html, body {
 
 main {
     height: 100%;
-
 }
 
-.container {
-    display: flex;
-    height: inherit;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-}
 
 #canvas {
     background-color: #c6c6c6;
