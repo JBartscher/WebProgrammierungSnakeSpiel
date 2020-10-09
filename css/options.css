@@ -1,0 +1,69 @@
+/**
+    SRC: Rounded Slider Tutorial:
+    https://www.w3schools.com/howto/howto_css_switch.asp
+
+    addition is that I multiply all px vallues by an float factor to scale ta a bigger size
+ */
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: calc(60px * 1.8);
+    height: calc(34px * 1.8);
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: calc(26px * 1.8);
+    width: calc(26px * 1.8);
+    left: calc(4px * 1.8);
+    bottom: calc(4px * 1.8);
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #4CD964;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #4CD964;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(calc(26px * 1.8));
+    -ms-transform: translateX(calc(26px * 1.8));
+    transform: translateX(calc(26px * 1.8));
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: calc(34px * 1.8);
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Options</title>
+    <meta content="A basic HTML5 snake game" name="description">
+    <meta content="Jasper Bartscher" name="author">
+
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/options.css" rel="stylesheet">
+
+</head>
+<body>
+<canvas height="480" id="background_canvas" width="640">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+<main>
+    <h3><span>OPTIONS</span>
+        <svg id="snake_tongue" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+             version="1.1" viewBox="0 0 63 63"
+             xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g transform="matrix(1,0,0,1,-465.027,-309.617)">
+        <g transform="matrix(1,-0,-0,1,465.027,309.617)">
+            <use height="56.548px" transform="matrix(0.992063,0,0,0.992063,0,0)" width="57.54px" x="2"
+                 xlink:href="#_Image1"
+                 y="3"/>
+        </g>
+    </g>
+            <defs>
+        <image height="57px" id="_Image1" width="58px"
+               xlink:href="data:image/png;base64,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"/>
+    </defs>
+</svg>
+    </h3>
+
+    <div class="container" id="button_container">
+        <div class="menu_item grow">
+            <a href="./canvas.html">
+                <svg class="svg_icon grow" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 119 119"
+                 xml:space="preserve"
+                 xmlns="http://www.w3.org/2000/svg">
+                <g id="Play" transform="matrix(5.13522,6.96262e-31,-6.32965e-32,5.13522,-1204.21,-1453.27)">
+                    <path d="M236,284.2C236,283.265 237.064,282.69 237.894,283.177L255.404,293.479C256.198,293.945 256.198,295.055 255.404,295.522C252.694,297.117 250.661,298.312 249.306,299.11C246.77,300.601 242.966,302.839 237.894,305.823C237.064,306.31 236,305.736 236,304.801L236,284.2Z"/>
+                </g>
+            </svg>
+            </a>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
