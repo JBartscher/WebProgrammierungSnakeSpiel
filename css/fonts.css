@@ -13,6 +13,10 @@
     src: url("../Assets/fonts/ROCCB___.TTF");
 }
 
+html {
+    font-family: Rockwell;
+}
+
 h1, h2, h3 {
     font-family: "Rockwell Extra Bold";
     font-size: 10em;
@@ -27,4 +31,9 @@ h4, h5, h6 {
     margin-top: 0.1em;
     margin-bottom: 0.1em;
     text-align: center;
+}
+
+p {
+    font-family: "Rockwell";
+    font-size: 2em;
 }

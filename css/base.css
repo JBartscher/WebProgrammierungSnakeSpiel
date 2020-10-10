@@ -50,3 +50,11 @@ html {
     color: inherit;
     text-decoration: none;
 }
+
+#back_button {
+    position: absolute;
+    margin-left: 50px;
+}
+.back_icon {
+    height: 75px;
+}
