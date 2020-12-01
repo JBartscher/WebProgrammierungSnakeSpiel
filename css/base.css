@@ -1,6 +1,13 @@
 html {
     background-color: #e0e2e3;
+
+    font-size: 1em;
+    padding: 0;
+}
+
+body {
     min-width: 360px;
+    height: 100%;
 }
 
 #background_canvas {
@@ -26,6 +33,7 @@ html {
 .menu_item {
     margin: 1em;
     width: 60%;
+    min-width: 500px;
     background-color: #EBEBEB;
 
     min-height: 5em;

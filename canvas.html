@@ -6,14 +6,15 @@
     <title>HTML5 Snake Game</title>
     <meta content="A basic HTML5 snake game" name="description">
     <meta name="author" content="Jasper Bartscher">
-    <!--
-    game script for later
-    <script type="module" src="src/main.js"></script>
-    -->
+
+    <!-- game script for later -->
+    <script  type="module" src="src/main.js"></script>
+
 
     <link href="css/base.css" rel="stylesheet">
     <link href="css/canvas.css" rel="stylesheet">
     <link href="css/animations.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
 </head>
 <body>
 <a id="back_button" href="main.html" title="back">
@@ -28,6 +29,10 @@
 </a>
 <main>
     <!--game canvas -->
+    <div class="sticky" id="score_header">
+        <p>Punkte: <span id="score">0</span></p>
+    </div>
+
 
     <div class="container">
         <canvas height="480" id="canvas" width="640">

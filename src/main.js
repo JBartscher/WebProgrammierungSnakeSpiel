@@ -4,7 +4,6 @@ import Game from "./Game.js";
 
 console.log("starting game");
 
-
 let form = document.getElementById("highscore_form");
 form.onsubmit = function (e) {
     e.preventDefault();
