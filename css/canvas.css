@@ -49,14 +49,13 @@ main {
     display: none;
     color: white;
     text-align: center;
-    font-family: Courier;
     font-size: larger;
 
     background: #EBEBEB;
 
-    background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
-    background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
-    background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
-    background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
-    background-image: linear-gradient(to bottom, #3D94F6, #1E62D0);
+    background-image: -webkit-linear-gradient(top, #333333, #000000);
+    background-image: -moz-linear-gradient(top, #333333, #000000);
+    background-image: -ms-linear-gradient(top, #333333, #000000);
+    background-image: -o-linear-gradient(top, #333333, #000000);
+    background-image: linear-gradient(to bottom, #333333, #000000);
 }

@@ -9,7 +9,7 @@ const DEBUG = false;
 
 export default class Game {
 
-    constructor(walls = true) {
+    constructor(walls = true, sound = false) {
 
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');

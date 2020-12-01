@@ -11,6 +11,8 @@
     <link href="css/fonts.css" rel="stylesheet">
     <link href="css/options.css" rel="stylesheet">
 
+    <script src="src/options.js"></script>
+
 </head>
 <body>
 <a id="back_button" href="main.html" title="back">
@@ -53,7 +55,7 @@
     </g>
 </svg>
             <label class="switch">
-                <input type="checkbox">
+                <input id="sound_option" type="checkbox" onchange="changeOptionEventHandler(event, 'sound');">
                 <span class="slider round"></span>
             </label>
             <h4>Sound</h4>
@@ -78,7 +80,7 @@
 </svg>
 
             <label class="switch">
-                <input type="checkbox">
+                <input id="walls_option" type="checkbox" onchange="changeOptionEventHandler(event, 'walls')";>
                 <span class="slider round"></span>
             </label>
             <h4>Walls</h4>
