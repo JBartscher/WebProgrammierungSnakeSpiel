@@ -42,8 +42,7 @@ export default class Game {
         }
 
         if(sound) {
-            this.SoundManager = new SoundManager();
-            this.SoundManager.playGameMusic();
+            SoundManager.playGameMusic();
         }
         // point that the snake can eat
         this.currentPoint = new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects);
@@ -89,7 +88,10 @@ export default class Game {
 
     addPoint() {
         this.score++;
+        SoundManager.playPickUp();
         let idx = this.gameObjects.indexOf(this.currentPoint);
+        document.getElementById("score").innerText = this.score.toString();
+
         this.gameObjects.splice(idx, 1);
         this.currentPoint = new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects);
         this.gameObjects.push(this.currentPoint);
@@ -120,6 +122,9 @@ export default class Game {
     displayGameOver() {
         // alert("You´ve lost!. Points: " + this.score);
         this.gameObjects = [];
+
+        SoundManager.pauseGameMusic();
+        SoundManager.playGameOver();
 
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.fillStyle = "#13481c";
