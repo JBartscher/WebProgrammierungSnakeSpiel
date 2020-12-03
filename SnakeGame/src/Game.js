@@ -39,6 +39,10 @@ export default class Game {
         // needs to be excecutet before a new point is created to ensure that the point is not "in" a wall.
         if (walls) {
             this.createWalls();
+            this.wallsEnabled = true;
+        }
+        else {
+            this.wallsEnabled = false;
         }
 
         if(sound) {
@@ -80,9 +84,12 @@ export default class Game {
             this.context.fillStyle = "#e70505";
             this.context.fillRect((this.canvas.width / 2) - 2.5, (this.canvas.height / 2) - 2.5, 5, 5);
         }
-
-        this.drawGrid();
-
+        if(this.wallsEnabled) {
+            this.drawGrid();
+        }
+        else {
+            this.drawGridWithoutWalls();
+        }
 
     }
 
@@ -115,6 +122,28 @@ export default class Game {
         for (var y = pT; y <= this.canvas.height - pB; y += s) {
             ctx.moveTo(pL, y)
             ctx.lineTo(this.canvas.width - pR, y)
+        }
+        ctx.stroke()
+    }
+
+    drawGridWithoutWalls() {
+        let ctx = this.context;
+        let s = 32;
+        let pL = s;
+        let pT = s;
+        let pR = s;
+        let pB = s;
+
+        ctx.strokeStyle = 'lightgrey'
+
+        ctx.beginPath()
+        for (var x = pL; x <= this.canvas.width - pR; x += s) {
+            ctx.moveTo(x, 0)
+            ctx.lineTo(x, this.canvas.height)
+        }
+        for (var y = pT; y <= this.canvas.height; y += s) {
+            ctx.moveTo(0, y)
+            ctx.lineTo(this.canvas.width, y)
         }
         ctx.stroke()
     }
