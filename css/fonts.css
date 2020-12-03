@@ -1,16 +1,16 @@
 @font-face {
     font-family: "Rockwell";
-    src: url("../Assets/fonts/ROCC____.TTF");
+    src: url("../Assets/Fonts/ROCC____.TTF");
 }
 
 @font-face {
     font-family: "Rockwell Extra Bold";
-    src: url("../Assets/fonts/ROCKEB.TTF");
+    src: url("../Assets/Fonts/ROCKEB.TTF");
 }
 
 @font-face {
     font-family: "Rockwell Bold";
-    src: url("../Assets/fonts/ROCCB___.TTF");
+    src: url("../Assets/Fonts/ROCCB___.TTF");
 }
 
 html {

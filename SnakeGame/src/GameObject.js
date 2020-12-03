@@ -63,7 +63,7 @@ class DynamicGameObject extends GameObject {
 
     update(timePassed) {
         super.update(timePassed);
-        ;
+
     }
 
 }

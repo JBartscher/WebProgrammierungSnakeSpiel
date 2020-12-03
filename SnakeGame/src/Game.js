@@ -4,12 +4,13 @@ import SnakeIOController from "./Snake/SnakeIOController.js";
 import Snake from "./Snake/Snake.js";
 import PointSpawner from "./Point/PointSpawner.js";
 import Wall from "./Wall.js";
+import SoundManager from "./Sound/SoundManager.js";
 
 const DEBUG = false;
 
 export default class Game {
 
-    constructor(walls = true, sound = false) {
+    constructor() {
 
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
@@ -19,11 +20,9 @@ export default class Game {
         this.oldTimeStamp = 0;
 
         this.score = 0;
-
-
     }
 
-    init(walls) {
+    init(walls, sound) {
 
         this.context.imageSmoothingEnabled = true;
         this.context.imageSmoothingQuality = 'high';
@@ -40,6 +39,11 @@ export default class Game {
         // needs to be excecutet before a new point is created to ensure that the point is not "in" a wall.
         if (walls) {
             this.createWalls();
+        }
+
+        if(sound) {
+            this.SoundManager = new SoundManager();
+            this.SoundManager.playGameMusic();
         }
         // point that the snake can eat
         this.currentPoint = new PointSpawner(this.canvas.width, this.canvas.height).spawnNewPoint(this.gameObjects);

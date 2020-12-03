@@ -16,8 +16,19 @@ form.onsubmit = function (e) {
 
 }
 
-let walls = JSON.parse(window.localStorage.getItem("walls")) || true;
-let sound = JSON.parse(window.localStorage.getItem("sound")) || false;
+let walls = JSON.parse(window.localStorage.getItem("walls"));
+// getItem("key") || default-value does not work with boolean values in local storage
+if(walls === null){
+    walls = true;
+}
+let sound = JSON.parse(window.localStorage.getItem("sound"));
+if(sound === null){
+    sound = false;
+}
 
-let game = new Game(walls, sound);
-game.init(true);
+/**
+ * start the actual game with the parameters we just retrieved form local storage
+ * @type {Game}
+ */
+const game = new Game();
+game.init(walls, sound);

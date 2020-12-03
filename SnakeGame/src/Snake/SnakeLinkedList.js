@@ -1,7 +1,6 @@
 "use strict";
 
-import LinkedList from "../lib/LinkedList.js"
-import {ListNode} from "../lib/LinkedList.js";
+import LinkedList, {ListNode} from "../lib/LinkedList.js"
 
 export default class SnakeLinkedList extends LinkedList{
 

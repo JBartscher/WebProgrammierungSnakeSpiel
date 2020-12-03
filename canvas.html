@@ -8,8 +8,8 @@
     <meta name="author" content="Jasper Bartscher">
 
     <!-- game script for later -->
-    <script  type="module" src="src/main.js"></script>
-
+    <script  type="module" src="SnakeGame/src/main.js"></script>
+    <script type="text/javascript" src="js/gamesound.js"></script>
 
     <link href="css/base.css" rel="stylesheet">
     <link href="css/canvas.css" rel="stylesheet">
@@ -27,13 +27,32 @@
     </g>
 </svg>
 </a>
+
+
 <main>
-    <!--game canvas -->
+<!-- AUDIO -->
+    <audio id="game_music_audioplayer" loop>
+        <!-- <source src="Assets/Sounds/Music/Its-Raining-Pixels.mp3" type="audio/ogg"> -->
+        <source src="Assets/Sounds/Music/Trancyvania.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="pick_up_audioplayer">
+        <!-- <source src="Assets/Sounds/Music/Its-Raining-Pixels.mp3" type="audio/ogg"> -->
+        <source src="Assets/Sounds/chosen/bling.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="game_over_audioplayer">
+        <!-- <source src="Assets/Sounds/Music/Its-Raining-Pixels.mp3" type="audio/ogg"> -->
+        <source src="Assets/Sounds/Music/Bonkers-for-Arcades.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- score display -->
     <div class="sticky" id="score_header">
         <p>Punkte: <span id="score">0</span></p>
     </div>
 
-
+    <!--game canvas -->
     <div class="container">
         <canvas height="480" id="canvas" width="640">
             Your browser does not support the HTML5 canvas tag.
