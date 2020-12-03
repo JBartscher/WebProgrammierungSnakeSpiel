@@ -3,7 +3,7 @@
 window.onload = function () {
     // works as autostart, even if the page is reloaded
     playGameMusic();
-
+    // make them available to the window to be called from within a module
     window.playGameMusic = playGameMusic;
     window.pauseGameMusic = pauseGameMusic;
     window.playPickUpSound = playPickUpSound;
