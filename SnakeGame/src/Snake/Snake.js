@@ -64,10 +64,13 @@ export default class Snake extends DynamicGameObject {
         super.update(timePassed);
 
         this.step_i = (this.step_i + 1 + timePassed) * this.speedMultiplikator;
+
         this.check_collisions();
+
         if (this.step_i > this.step_max) {
             this.step_i = 0
             for (let segment of this.segments) {
+                // Here we actually execute the step
                 segment.currentStep.doStep(segment);
             }
             this.check_collisions();
@@ -85,10 +88,12 @@ export default class Snake extends DynamicGameObject {
 
             if (this.head.intersects(obj)) {
                 console.log("snake_head intersects, its a :" + obj);
+                // we hit a point
                 if (obj === this.gameRefrence.currentPoint) {
                     this.gameRefrence.addPoint(); // increases score by 1
                     this.addSegment();
                     this.tailLength++;
+
                 } else if (obj instanceof Wall || obj instanceof Segment || obj instanceof Tail) {
                     clearInterval(this.gamespeedIncreaseIntervall);
                     this.gameRefrence.displayGameOver();
@@ -122,5 +127,4 @@ export default class Snake extends DynamicGameObject {
         this.gameRefrence.gameObjects.push(newSegment);
         this.segments.prependBeforeTail(newSegment);
     }
-
 }

@@ -37,6 +37,19 @@ class GameObject {
             this.y < other.y + other.h &&
             this.y + this.h > other.y);
     }
+
+    /**
+     * checks if a object is out of bounds. This is done by utilizing the intersects function with a temporarily
+     * created StaticGameObject which has the size of the whole canvas.
+     *
+     * @returns {boolean} true if is out og bounds otherwise false
+     */
+    outOfBounds(){
+        const canvas = document.getElementById('canvas');
+        let other = new StaticGameObject(0,0,canvas.width, canvas.height);
+        return !this.intersects(other);
+
+    }
 }
 
 class DynamicGameObject extends GameObject {
@@ -82,14 +95,6 @@ class StaticGameObject extends GameObject {
         super.draw(context);
     }
 }
-
-function overlaps(a, b) {
-    if (a === b) {
-        return false;
-    }
-    return a.x === b.x && a.y === b.y;
-}
-
 
 export {DynamicGameObject, StaticGameObject};
 

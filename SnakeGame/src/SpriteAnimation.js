@@ -121,13 +121,3 @@ export default class SpriteAnimation {
     }
 
 }
-
-function foo(self) {
-    self.currentFrame++;
-
-    if (self.currentFrame > self.maxFrame) {
-        self.currentFrame = 0;
-    }
-    console.log(self.currentFrame);
-    return self.currentFrame;
-}

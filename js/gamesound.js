@@ -22,12 +22,19 @@ function soundIsEnabled() {
     return soundIsEnabled;
 }
 
+/**
+ * plays game music.
+ *
+ * The sound
+ */
 function playGameMusic() {
     if (soundIsEnabled()) {
         document.getElementById("game_music_audioplayer").play();
     }
 }
-
+/**
+ * plauses game music
+ */
 function pauseGameMusic() {
     if (soundIsEnabled()) {
         document.getElementById("game_music_audioplayer").pause();
