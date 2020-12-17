@@ -9,7 +9,7 @@
 
     <!-- game script for later -->
     <script  type="module" src="SnakeGame/src/main.js"></script>
-    <script type="text/javascript" src="js/gamesound.js"></script>
+    <script  src="js/gamesound.js"></script>
 
     <link href="css/base.css" rel="stylesheet">
     <link href="css/canvas.css" rel="stylesheet">
@@ -61,8 +61,8 @@
             <form autocomplete="off">
                 <label for="points">Points:
                     <input hidden id="points" name="points" type="number" value="">
-                    <p id="points_display"></p>
                 </label>
+                <label id="points_display"></label>
                 <label for="name">Name:
                     <input id="name" required="required" name="name" type="text" pattern="{3,}">
                 </label>
