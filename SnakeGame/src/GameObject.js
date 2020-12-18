@@ -2,7 +2,11 @@
 
 import {easeLinear} from "./UtilFunctions.js";
 
+/**
+ * Base class for all dynamic and static game objects.
+ */
 class GameObject {
+
     constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
@@ -11,14 +15,24 @@ class GameObject {
         this.h = h;
     }
 
+    /**
+     * method which is called for every instance of game objects and its derived kind in the game loop.
+     * @param timePassed timePassed since last update call.
+     */
     update(timePassed) {
-
+        // nothing to handle
     }
 
     toString() {
         return '(' + this.constructor.name + ', ' + this.x + ', ' + this.y + ')';
     }
 
+    /**
+     * method which is called for every instance of game objects and its derived kind in the game loop to draw
+     * the entity.
+     *
+     * @param context the canvas draw-context
+     */
     draw(context) {
         context.fillStyle = "#c34d4d";
         context.fillRect(this.x, this.y, this.w, this.h);
@@ -52,6 +66,9 @@ class GameObject {
     }
 }
 
+/**
+ * Base class for every game object that changes its position or has any kind of movement.
+ */
 class DynamicGameObject extends GameObject {
 
     constructor(x, y, w, h, easeFunction = easeLinear) {
@@ -67,7 +84,6 @@ class DynamicGameObject extends GameObject {
     }
 
     /** Vector2D*/
-
     setMoveVector(from, to, duration) {
         this.from = from;
         this.to = to;
@@ -76,11 +92,13 @@ class DynamicGameObject extends GameObject {
 
     update(timePassed) {
         super.update(timePassed);
-
     }
 
 }
 
+/**
+ * Base class for every game object that stays where it is initialized
+ */
 class StaticGameObject extends GameObject {
 
     constructor(x, y, w, h) {

@@ -1,5 +1,7 @@
-//import {playGameMusic, playPickUpSound, pauseGameMusic, playGameOverSound} from "../../../js/gamesound.js"
-
+/**
+ * simple facade to have a interface to talk to from game code which will be sitting in a module and can there for not
+ * access scripts.
+ */
 export default class SoundManager {
 
     static playGameMusic(){

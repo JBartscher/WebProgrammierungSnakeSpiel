@@ -2,6 +2,9 @@
 
 const STEP_LENGTH = 32;
 
+/**
+ * Class that represents a step of one segment on the field. Steps are passed along the snake from head to tail.
+ */
 export default class Step{
 
     constructor(direction) {
@@ -9,7 +12,9 @@ export default class Step{
     }
 
     /**
-     * executes the current step while taking care of not getting out of bounds.
+     * executes the current step.
+     * Takes care taking of not getting out of bounds and moving the current segement to the opposite side of the field
+     * if so needed.
      *
      * @param segment which will be moved
      */
@@ -59,6 +64,7 @@ export default class Step{
     /**
      * Does an inverted step.
      * Necessary to let the tail do a step in the opposite direction of which it moves to make space for a new segment.
+     *
      * @param segment segment which will be moved opposite to its current step direction
      */
     doInvertedStep(segment){

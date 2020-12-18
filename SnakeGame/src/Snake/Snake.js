@@ -49,13 +49,12 @@ export default class Snake extends DynamicGameObject {
         // is needed to apply the context to the setInterval function
         let context = this;
 
-        //every 3 seconds
+        //every 5 seconds
         this.gamespeedIncreaseIntervall = setInterval(function () {
             increaseGameSpeedFunction.call(context);
         }, 5000);
 
     }
-
 
     step_i = 0;
     step_max = 32;
@@ -103,25 +102,35 @@ export default class Snake extends DynamicGameObject {
     }
 
     draw(context) {
-        //draw is handeld by game now
+        //draw is now handled by each segment individually
     }
 
     /**
-     * is called periodically to increase the gamespeed every 3 seconds up to a maximum  of 3x the normal gamespeed.
+     * is called periodically to increase the gamespeed every 5 seconds up to a maximum  of 3x the normal gamespeed.
      */
     increaseGameSpeed() {
         this.speedMultiplikator = this.speedMultiplikator + 0.1;
         //maximum gamespeed is 3.0
         this.speedMultiplikator = Math.min(this.speedMultiplikator, 3.0);
-
-        console.log("the gamespeed is now: " + this.speedMultiplikator)
     }
 
+    /**
+     * adds a new segment to the snake.
+     *
+     * The new segment is palced where the tail currently is and then the tail is moved on extra step away to create
+     * space for the new segment.
+     */
     addSegment() {
         let newSegment = new Segment(this.tail.x, this.tail.y, 32, 32)
+
         newSegment.direction = this.tail.direction;
         newSegment.currentStep = this.tail.currentStep;
 
+        /**
+         * the tail does an additional inverted step, to make space for the newly created segment. The new segment has
+         * the same direction as the tail. Practically, the last step of the tail is reversed. Since the step was
+         * executed correctly before, this also ensures that no error can occur and the tail is set to an valid position.
+         */
         this.tail.currentStep.doInvertedStep(this.tail);
 
         this.gameRefrence.gameObjects.push(newSegment);

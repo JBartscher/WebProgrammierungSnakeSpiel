@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * class which handles user input and setts the action for the snake
+ */
 export default class SnakeIOController {
 
     constructor() {
@@ -40,6 +43,12 @@ export default class SnakeIOController {
         }
     }
 
+    /**
+     * binds this IOManager to an element.
+     * In this context it will always be the snake entity.
+     *
+     * @param elem is the Object this class is bound to.
+     */
     bindElementToIOManager(elem) {
         this.elem = elem;
     }

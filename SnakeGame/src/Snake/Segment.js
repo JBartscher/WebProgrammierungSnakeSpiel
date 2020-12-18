@@ -6,7 +6,7 @@ import Step from "./Step.js";
 export default class Segment extends DynamicGameObject {
 
     SCALE_FACTOR = 2;
-    SEGMENT_SPRITE = "./Assets/Snakesegment.png"
+    SEGMENT_SPRITE = "./Assets/Images/Snakesegment.png"
     currentStep;
 
     constructor(x, y, w, h, direction = "left") {

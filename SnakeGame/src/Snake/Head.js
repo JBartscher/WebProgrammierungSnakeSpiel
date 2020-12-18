@@ -4,28 +4,36 @@ import Segment from "./Segment.js";
 import SpriteAnimation from "../SpriteAnimation.js";
 import Step from "./Step.js";
 
+/**
+ * class which represents the head of the snake.
+ */
 export default class Head extends Segment {
 
     constructor(x, y, w, h) {
-        // w/2 to ensure the snake "fits" in the grid
         super(x, y, w, h);
-        this.animation = new SpriteAnimation("./Assets/Snakehead.png", 64, 64, 4);
+        this.animation = new SpriteAnimation("./Assets/Images/Snakehead.png", 64, 64, 4);
     }
 
     draw(context) {
-        // context.fillStyle = "#cf991a";
-        // context.fillRect(this.x, this.y, this.w, this.h);
-
+        // draws the sprite animation of the snake head
         this.animation.animate(context, this, this.direction)
     }
 
+    /**
+     * change the direction in which the snake is moving.
+     *
+     * On change of the direction the current step is also changed.
+     * @param direction
+     */
     changeDirection(direction) {
         super.changeDirection(direction);
-
         this.currentStep = new Step(direction);
     }
 
     update(timePassed) {
+        /**
+         * any collision handling or other update related stuff is done by the snake object.
+         */
         super.update(timePassed);
     }
 
