@@ -20,7 +20,6 @@ export default class Wall extends StaticGameObject {
      */
     static createWalls() {
         const game = new Game(); //the game Singleton, which will be initialized by this point
-        alert(game);
 
         const wallLeft = new Wall(0, 0, 32, game.canvas.height);
         game.gameObjects.push(wallLeft);
