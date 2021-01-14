@@ -1,3 +1,5 @@
+"use strict"
+
 /**
  * gets the option-value for walls and sound from localStorage or sets default values.
  *
@@ -25,7 +27,7 @@ window.onload = function () {
 
 /**
  * changes the value of options in localStorage
- * @param event inputChagedEvent
+ * @param event inputChangedEvent
  * @param option "sound" or "walls"
  */
 function changeOptionEventHandler(event, option) {

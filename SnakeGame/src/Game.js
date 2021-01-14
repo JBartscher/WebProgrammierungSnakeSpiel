@@ -1,11 +1,11 @@
 "use strict";
 
-import SnakeIOController from "./Snake/SnakeIOController.js";
-import Snake from "./Snake/Snake.js";
-import PointSpawner from "./Point/PointSpawner.js";
-import Wall from "./Wall.js";
+import SnakeIOController from "./GameEntities/Snake/SnakeIOController.js";
+import Snake from "./GameEntities/Snake/Snake.js";
+import PointSpawner from "./GameEntities/Point/PointSpawner.js";
+import Wall from "./GameEntities/Wall.js";
 import SoundManager from "./Sound/SoundManager.js";
-import Grid from "./Grid.js";
+import Grid from "./GameEntities/Grid.js";
 
 /**
  * Game-class is a lazy singleton to access attributes like width and hight of the canvas on runtime.

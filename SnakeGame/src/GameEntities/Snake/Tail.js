@@ -7,7 +7,7 @@ import Segment from "./Segment.js";
  */
 export default class Tail extends Segment{
 
-    TAIL_SPRITE = "./Assets/Images/Snaketail.png"
+    TAIL_SPRITE = "./assets/Images/Snaketail.png"
 
     constructor(x,y,w,h) {
         super(x,y,w,h);

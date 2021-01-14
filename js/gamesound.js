@@ -41,13 +41,18 @@ function pauseGameMusic() {
     }
 }
 
-
+/**
+ * plays "pickup" sound effect.
+ */
 function playPickUpSound() {
     if (soundIsEnabled()) {
         document.getElementById("pick_up_audioplayer").play();
     }
 }
 
+/**
+ * plays "game-over" sound effect.
+ */
 function playGameOverSound() {
     if (soundIsEnabled()) {
         document.getElementById("game_over_audioplayer").play();

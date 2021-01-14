@@ -22,7 +22,7 @@ export default class LinkedList {
      * @param data which will be appended
      */
     append(data) {
-        let node = new ListNode(data)
+        let node = new ListNode(data);
 
         if (this.isEmpty()) {
             this.head = node;
@@ -44,7 +44,7 @@ export default class LinkedList {
      * @param data which will be prepended
      */
     prepend(data) {
-        let node = new ListNode(data)
+        let node = new ListNode(data);
 
         if (this.isEmpty()) {
             this.head = node;

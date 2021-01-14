@@ -1,7 +1,7 @@
 "use strict";
 
 import {StaticGameObject} from "./GameObject.js";
-import Game from "./Game.js";
+import Game from "../Game.js";
 
 const WALL_COLOR = "#000000"
 

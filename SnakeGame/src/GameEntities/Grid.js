@@ -1,6 +1,6 @@
 "use strict";
 
-import Game from "./Game.js";
+import Game from "../Game.js";
 
 export default class Grid {
 

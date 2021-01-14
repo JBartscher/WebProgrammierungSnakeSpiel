@@ -1,11 +1,13 @@
 "use strict";
 
-import {easeLinear} from "./UtilFunctions.js";
+import {easeLinear} from "../lib/UtilFunctions.js";
 
 /**
  * Base class for all dynamic and static game objects.
  */
 class GameObject {
+
+    static DEFAULT_DRAW_COLOR = "#c34d4d";
 
     constructor(x, y, w, h) {
         this.x = x;
@@ -34,7 +36,7 @@ class GameObject {
      * @param context the canvas draw-context
      */
     draw(context) {
-        context.fillStyle = "#c34d4d";
+        context.fillStyle = GameObject.DEFAULT_DRAW_COLOR;
         context.fillRect(this.x, this.y, this.w, this.h);
     }
 
@@ -73,21 +75,11 @@ class DynamicGameObject extends GameObject {
 
     constructor(x, y, w, h, easeFunction = easeLinear) {
         super(x, y, w, h);
-
-        this.moving = false
-
         this.from = null;
         this.to = null;
         this.duration = null;
 
         this.easeFunction = easeFunction;
-    }
-
-    /** Vector2D*/
-    setMoveVector(from, to, duration) {
-        this.from = from;
-        this.to = to;
-        this.duration = duration;
     }
 
     update(timePassed) {
