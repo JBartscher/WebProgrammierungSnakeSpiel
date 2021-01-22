@@ -70,7 +70,8 @@ project-root
 └───css <-- Stylesheets
     │   ...
 ```
-
+## Klassendiagramm __./SnakeGame/src__ 
+![Image](assets/Images/readme_screenshots/UML-Diagramm.png)
 ## Entscheidungen
 
 * Der Quellcode für das eigentlich Spiel liegt getrennt von anderem JS-Code in einem eigenen Verzeichnis um direkte

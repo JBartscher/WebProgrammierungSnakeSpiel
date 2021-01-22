@@ -24,6 +24,11 @@
   </nodes>
   <notes />
   <edges>
+    <edge source="D:/Web Programmierung/SnakeGame/src/GameEntities/Grid.js#Game#22;" target="D:/Web Programmierung/SnakeGame/src/Game.js#Grid#308;D:/Web Programmierung/SnakeGame/src/Game.js#PointSpawner#148;D:/Web Programmierung/SnakeGame/src/Game.js#Snake#97;D:/Web Programmierung/SnakeGame/src/Game.js#SnakeIOController#22;D:/Web Programmierung/SnakeGame/src/Game.js#SoundManager#256;D:/Web Programmierung/SnakeGame/src/Game.js#Wall#213;">
+      <point x="96.0" y="0.0" />
+      <point x="520.0" y="80.0" />
+      <point x="-40.0" y="-82.0" />
+    </edge>
     <edge source="D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#DynamicGameObject#23;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Head#104;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Segment#186;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#SnakeLinkedList#134;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Tail#74;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Wall#222;" target="D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/SnakeLinkedList.js#LinkedList#22;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/SnakeLinkedList.js#ListNode#35;">
       <point x="83.5" y="0.0" />
       <point x="-112.0" y="0.0" />
@@ -33,11 +38,6 @@
       <point x="960.0" y="760.0" />
       <point x="-120.0" y="-40.0" />
     </edge>
-    <edge source="D:/Web Programmierung/SnakeGame/src/GameEntities/Grid.js#Game#22;" target="D:/Web Programmierung/SnakeGame/src/Game.js#Grid#308;D:/Web Programmierung/SnakeGame/src/Game.js#PointSpawner#148;D:/Web Programmierung/SnakeGame/src/Game.js#Snake#97;D:/Web Programmierung/SnakeGame/src/Game.js#SnakeIOController#22;D:/Web Programmierung/SnakeGame/src/Game.js#SoundManager#256;D:/Web Programmierung/SnakeGame/src/Game.js#Wall#213;">
-      <point x="96.0" y="0.0" />
-      <point x="520.0" y="80.0" />
-      <point x="-40.0" y="-82.0" />
-    </edge>
     <edge source="D:/Web Programmierung/SnakeGame/src/main.js#Game#22;" target="D:/Web Programmierung/SnakeGame/src/Game.js#Grid#308;D:/Web Programmierung/SnakeGame/src/Game.js#PointSpawner#148;D:/Web Programmierung/SnakeGame/src/Game.js#Snake#97;D:/Web Programmierung/SnakeGame/src/Game.js#SnakeIOController#22;D:/Web Programmierung/SnakeGame/src/Game.js#SoundManager#256;D:/Web Programmierung/SnakeGame/src/Game.js#Wall#213;">
       <point x="-60.0" y="0.0" />
       <point x="75.0" y="0.0" />
@@ -46,13 +46,13 @@
       <point x="0.0" y="-49.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Segment.js#DynamicGameObject#23;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Segment.js#Step#74;" target="D:/Web Programmierung/SnakeGame/src/GameEntities/GameObject.js#DynamicGameObject#1949;D:/Web Programmierung/SnakeGame/src/GameEntities/GameObject.js#StaticGameObject#2377;D:/Web Programmierung/SnakeGame/src/GameEntities/GameObject.js#easeLinear#23;">
-      <point x="-83.5" y="0.0" />
-      <point x="120.0" y="0.0" />
-    </edge>
     <edge source="D:/Web Programmierung/SnakeGame/src/GameEntities/Point/Point.js#SpriteAnimation#72;D:/Web Programmierung/SnakeGame/src/GameEntities/Point/Point.js#StaticGameObject#22;" target="D:/Web Programmierung/SnakeGame/src/GameEntities/SpriteAnimation.js">
       <point x="75.0" y="0.0" />
       <point x="-140.0" y="0.0" />
+    </edge>
+    <edge source="D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Segment.js#DynamicGameObject#23;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Segment.js#Step#74;" target="D:/Web Programmierung/SnakeGame/src/GameEntities/GameObject.js#DynamicGameObject#1949;D:/Web Programmierung/SnakeGame/src/GameEntities/GameObject.js#StaticGameObject#2377;D:/Web Programmierung/SnakeGame/src/GameEntities/GameObject.js#easeLinear#23;">
+      <point x="-83.5" y="0.0" />
+      <point x="120.0" y="0.0" />
     </edge>
     <edge source="D:/Web Programmierung/SnakeGame/src/Game.js#Grid#308;D:/Web Programmierung/SnakeGame/src/Game.js#PointSpawner#148;D:/Web Programmierung/SnakeGame/src/Game.js#Snake#97;D:/Web Programmierung/SnakeGame/src/Game.js#SnakeIOController#22;D:/Web Programmierung/SnakeGame/src/Game.js#SoundManager#256;D:/Web Programmierung/SnakeGame/src/Game.js#Wall#213;" target="D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#DynamicGameObject#23;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Head#104;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Segment#186;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#SnakeLinkedList#134;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Tail#74;D:/Web Programmierung/SnakeGame/src/GameEntities/Snake/Snake.js#Wall#222;">
       <point x="75.0" y="13.333333333333314" />
@@ -152,8 +152,10 @@
       <point x="0.0" y="15.0" />
     </edge>
   </edges>
-  <settings layout="Orthogonal" zoom="0.3289358600583089" x="1187.9503954426332" y="287.4676960640154" />
-  <SelectedNodes />
+  <settings layout="Orthogonal" zoom="0.48663967611336034" x="1428.5" y="592.5" />
+  <SelectedNodes>
+    <node>D:/Web Programmierung/SnakeGame/src/main.js#Game#22;</node>
+  </SelectedNodes>
   <Categories>
     <Category>All</Category>
   </Categories>
