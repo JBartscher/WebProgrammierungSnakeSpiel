@@ -17,6 +17,7 @@ export default class Game {
 
     constructor() {
 
+        // lazy singleton impl.
         if (instance) {
             return instance;
         }
@@ -33,6 +34,12 @@ export default class Game {
         this.score = 0;
     }
 
+    /**
+     * initilaizes the game
+     *
+     * @param walls if walls are enabled
+     * @param sound if sound is enabled
+     */
     init(walls, sound) {
         this.context.imageSmoothingEnabled = true;
         this.context.imageSmoothingQuality = 'high';

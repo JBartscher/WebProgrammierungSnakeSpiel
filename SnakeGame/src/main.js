@@ -6,8 +6,13 @@ console.log("starting game");
 
 let form = document.getElementById("highscore_form");
 
+/**
+ * handle gameover highscore form submit
+ *
+ * @param e submit Event
+ * @returns {boolean} weiterpropagieren des Events
+ */
 form.onsubmit = function (e) {
-
     e.preventDefault();
     let date = new Date();
     let highscore = JSON.parse(window.localStorage.getItem("highscore")) || [];
