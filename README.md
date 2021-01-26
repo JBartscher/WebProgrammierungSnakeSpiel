@@ -84,11 +84,11 @@ project-root
 * Die Sprites für das Spiel wurden von mir handgezeichnet bevor der visuelle Stil im Rahmen der ersten ESA feststand.
   Die Sprites passen nicht mehr 100% zum spartanischen/cleanen Stil des Spieles. Durch den entstandenen Aufwand wäre es
   allerdings schade die Sprites wegzuschmeißen, daher verbleiben sie im Spiel.
-* Die Schlange startet immer an der selben Stelle. Der zuwachs der Gewschwindigkeit ist rein Zeitgesteuert und wirkt sich nicht auf die Punkte vergabe aus. Die Schlange ist mit Absicht so Schnell das sie schwer zu kontrollieren ist und das Spiel nicht zu einfach wird. 
+* Die Schlange startet immer an der selben Stelle. Der Zuwachs der Geschwindigkeit ist rein zeitgesteuert und wirkt sich nicht auf die Punktevergabe aus. Die hohe Geschwindigkeit der Schlange wurde mit Absicht implementiert um den Schwierigkeitsgrad zu erhöhen.
 
 ## Known-Issues
 * Durch die feste Geschwindigkeit, in der von Step zu Step gegangen wird, ist es möglich mehrmals pro Step zu "lenken" was es möglich macht 
-  (besonders zu Beginn des Spieles) denk Kopf der Schlange in das Segment hinter dem Kopf zu steuern was zu einem sofortigen GameOver führt.
+  (besonders zu Beginn des Spieles) den Kopf der Schlange in das Segment hinter dem Kopf zu steuern was zu einem sofortigen GameOver führt.
   
-* Aus dem selben Grund ist es möglich beim Spiel ohne Wände den Canvas zu verlassen und sobald der Kopf das Feld verlässt in eine andere Richtung zu verlassen. Damit ist es möglich das die Schlange das Spielfeld verlässt ohne auf der gegenüberliegenden Seite wieder zu erscheinen.
+* Aus dem selben Grund ist es möglich beim Spiel ohne Wände den Canvas zu verlassen und sobald der Kopf das Feld verlässt in eine andere Richtung zu verlassen. Damit ist es möglich, dass die Schlange das Spielfeld verlässt ohne auf der gegenüberliegenden Seite wieder zu erscheinen.
 
